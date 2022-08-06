@@ -1,0 +1,29 @@
+<div class="p-5 mb-4 bg-light rounded-3 animated fadeIn">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Proyectos</h1>
+        <p class="col-md-8 fs-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse provident voluptate
+            quibusdam repellendus magni iusto distinctio doloremque alias ea, adipisci soluta voluptatem fugiat
+            blanditiis nulla dolores ipsam, nobis, optio debitis?</p>
+
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Cards de proyectos-->
+        <div class="col" *ngFor="let app of aplicaciones; let i = index ">
+            <div class="card h-100">
+                <img src="{{app.imgPrev}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{app.nombre}}</h5>
+                    <p class="card-text">{{app.descripcion}}
+                    </p>
+
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a [routerLink]="['/aplicacion', i]" class="btn btn-outline-primary" role="button">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

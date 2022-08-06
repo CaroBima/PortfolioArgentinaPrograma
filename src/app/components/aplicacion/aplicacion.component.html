@@ -1,0 +1,42 @@
+<div class="p-5 mb-4 bg-light rounded-3 animated fadeIn">
+    <div class="container-fluid py-5 ">
+        <h1 class="display-5 fw-bold mb-4">{{aplicacion.nombre}}</h1>
+        <p class="col-md-12 fs-5 mb-4">{{aplicacion.descripAmplia}}</p>
+
+        <!-- Comienzo del carousel-->
+        <div class="container-fluid tamanio">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active justify-content-center imagenCar">
+                        <img src="{{aplicacion.imgPrev}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item imagenCar" *ngIf="( aplicacion.img1!='')">
+                        <img src="{{aplicacion.img1}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item imagenCar" *ngIf="( aplicacion.img2!='')">
+                        <img src="{{aplicacion.img2}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item imagenCar" *ngIf="( aplicacion.img3!='')">
+                        <img src="{{aplicacion.img3}}" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- Fin del carousel-->
+
+        <!-- Boton para volver atrás-->
+        <div class="d-grid gap-2 col-3 mx-auto mt-5">
+            <a [routerLink]="['/aplicaciones']" class="btn btn-outline-primary" role="button">Volver a Proyectos</a>
+        </div>
+    </div>
+</div>
