@@ -15,23 +15,23 @@
     </nav>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast"
-        *ngIf="(cursos.length===0 && banderaBusqueda===true);">
+        *ngIf="(cursos.length===0 && banderaBusqueda===true); else elseBlock">
         <div class="col-md-12">
             <div class="alert alert-info" role="alert">
-                No existen resultados para el término {{buscarTecnol.value}}
+                No existen resultados para el término {{tecnologia}}
             </div>
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast"
-        *ngIf="(cursos.length!=0 && buscarTecnol.value!='' && banderaBusqueda===true);">
-        <div class="col-md-12">
-            <div class="alert alert-info" role="alert">
-                Estos son los cursos que contienen {{buscarTecnol.value}}:
+    <ng-template #elseBlock>
+        <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast" *ngIf="(tecnologia !='')">
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert">
+                    Estos son los cursos que contienen {{tecnologia}}:
+                </div>
             </div>
         </div>
-    </div>
-
+    </ng-template>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <!-- Cards de proyectos-->
