@@ -14,13 +14,25 @@
         </div>
     </nav>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast" *ngIf=" cursos.length===0">
+    <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast"
+        *ngIf="(cursos.length===0 && banderaBusqueda===true);">
         <div class="col-md-12">
             <div class="alert alert-info" role="alert">
                 No existen resultados para el término {{buscarTecnol.value}}
             </div>
         </div>
     </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 animated fadeIn fast"
+        *ngIf="(cursos.length!=0 && buscarTecnol.value!='' && banderaBusqueda===true);">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                Estos son los cursos que contienen {{buscarTecnol.value}}:
+            </div>
+        </div>
+    </div>
+
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <!-- Cards de proyectos-->
         <div class="col" *ngFor="let curso of cursos;">
