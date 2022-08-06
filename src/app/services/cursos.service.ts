@@ -16,7 +16,7 @@ export class CursosService {
       temas:
         'Introducción al desarrollo web, Front End estático, Front End - Desarrollo Web Dinámico, Bases de datos, POO - Buenas prácticas de programación, Java EE, Java Spring boot, DevOps',
       tecnologias:
-        'Html, Css, Bootstrap, Javascript, Typescript, Angular, Bases de datos, POO, Java EE, Spring Boot',
+        'Html, Css, Bootstrap, Javascript, Typescript, Angular, Bases de datos, POO, Java EE, Spring Boot. API, API Rest',
       duracion: '250 hs',
       link: 'https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa',
     },
@@ -54,7 +54,7 @@ export class CursosService {
       img: '../../../assets/img/certificados/certificadoTodoCode.jpg',
       temas:
         'Arquitectura Cliente-Servidor, Protocolo HTTP: métodos GET, POST, DELETE, PUT, Librerías Vs. Frameworks, Introducción a Maven, Spring Vs Spring Boot, Patrón MVC, APIs Rest, JSON, Postman, Patrón DTO, Arquitectura Multicapas, Inversión de Control, Inyección de dependencias, Motor JPA: Hibernate',
-      tecnologias: 'Java, JPA: Hibernate, Postman, Json',
+      tecnologias: 'Java, JPA: Hibernate, Postman, Json,  API, API Rest',
       duracion: '120 hs',
       link: 'https://todocodeacademy.com/course/desarrollo-de-apis-con-spring-boot/',
     },

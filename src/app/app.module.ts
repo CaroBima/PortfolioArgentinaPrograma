@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 //rutas
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,6 @@ import { AboutComponent } from './components/about/about.component';
 import { AplicacionesComponent } from './components/aplicaciones/aplicaciones.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { AplicacionComponent } from './components/aplicacion/aplicacion.component';
-import { ResultadoBuscadorComponent } from './components/resultado-buscador/resultado-buscador.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +25,8 @@ import { ResultadoBuscadorComponent } from './components/resultado-buscador/resu
     AplicacionesComponent,
     CursosComponent,
     AplicacionComponent,
-    ResultadoBuscadorComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
