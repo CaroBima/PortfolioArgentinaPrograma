@@ -87,10 +87,12 @@ export class AplicacionesService {
 
   constructor() {}
 
+  //devuelve todas las aplicaciones
   public getAplicaciones() {
     return this.aplicaciones;
   }
 
+  //devuelve una aplicacion puntual por el id, se usa para mostrar el detalle de la app
   public getAplicacion(id: number) {
     return this.aplicaciones[id];
   }
