@@ -14,6 +14,7 @@ const ROUTES: Routes = [
   { path: 'aplicacion/:id', component: AplicacionComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'mistack', component: MiStackComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
