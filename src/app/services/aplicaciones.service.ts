@@ -35,7 +35,7 @@ export class AplicacionesService {
       nombre: 'Sitio web Codo a Codo',
       descripcion:
         'Sitio realizado con bootstrap y Js. Hecho para el curso de Java Full Stack de Codo a Codo',
-      imgPrev: '../../../assets/img/codoacodo01.jpg',
+      imgPrev: '../../../assets/img/codoacodo01.png',
       descripAmplia:
         'Sitio web realizado como trabajo práctico del curso, copiando una imagen jpg dada por los docentes. Permite además calcular, desde el link de Comprar tickets, el costo de los tickets de acuerdo a la cantidad y categoría ingresados por el usuario',
       url: 'https://codoacodotpintegrador.netlify.app/',

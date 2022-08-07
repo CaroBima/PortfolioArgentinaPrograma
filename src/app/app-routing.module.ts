@@ -5,6 +5,7 @@ import { AplicacionComponent } from './components/aplicacion/aplicacion.componen
 import { AplicacionesComponent } from './components/aplicaciones/aplicaciones.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { HomeComponent } from './components/home/home.component';
+import { MiStackComponent } from './components/miStack/miStack.component';
 
 const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +13,7 @@ const ROUTES: Routes = [
   { path: 'aplicaciones', component: AplicacionesComponent },
   { path: 'aplicacion/:id', component: AplicacionComponent },
   { path: 'cursos', component: CursosComponent },
+  { path: 'mistack', component: MiStackComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
