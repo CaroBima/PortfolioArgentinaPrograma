@@ -16,7 +16,7 @@ export class CursosService {
       temas:
         'Introducción al desarrollo web, Front End estático, Front End - Desarrollo Web Dinámico, Bases de datos, POO - Buenas prácticas de programación, Java EE, Java Spring boot, DevOps',
       tecnologias:
-        'Html, Css, Bootstrap, Javascript, Typescript, Angular, Bases de datos, POO, Java EE, Spring Boot. API, API Rest',
+        'Html, Css, Bootstrap, Javascript, Typescript, Angular, Bases de datos, POO, Java EE, Spring Boot. API, API Rest, Js',
       duracion: '250 hs',
       link: 'https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa',
     },
@@ -30,7 +30,7 @@ export class CursosService {
       temas:
         'Html, Css, Boostrap, Js, Git, Scrum, Arquitectura, Bases de datos, Vue, Java, Ajax, Spring',
       tecnologias:
-        'Html, Css, Bootstrap, Javascript, GIT, Bases de datos, POO, Java, MySql',
+        'Html, Css, Bootstrap, Javascript, GIT, Bases de datos, POO, Java, MySql, Scrum, Github, Js',
       duracion: '198 hs',
       link: 'https://aulasvirtuales.bue.edu.ar/',
     },
@@ -80,7 +80,7 @@ export class CursosService {
       img: '../../../assets/img/certificados/MuniIonic.jpg',
       temas:
         'Fundamentos de la programación, Programación imperativa, Programación Orientada a Objetos',
-      tecnologias: 'Html, Css, Javascript, Ionic',
+      tecnologias: 'Html, Css, Javascript, Typescript, Ionic',
       duracion: '',
       link: 'https://empleo.cordoba.gob.ar/services/formacion-para-el-empleo/',
     },

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Aplicacion } from '../models/aplicacion';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AplicacionesService {
-  private aplicaciones: any[] = [
+  private aplicaciones: Aplicacion[] = [
     {
       nombre: 'Gestión Hotelera',
       descripcion:
@@ -17,6 +18,7 @@ export class AplicacionesService {
       img1: '../../../assets/img/menulogueohotel.jpg',
       img2: '../../../assets/img/Hotel-Alta-Empleado.png',
       img3: '../../../assets/img/Hotel-Guardado-de-datos-empleado.png',
+      github: 'https://github.com/CaroBima/ReservaHotel',
     },
     {
       nombre: 'Beer Stock',
@@ -30,6 +32,7 @@ export class AplicacionesService {
       img1: '',
       img2: '',
       img3: '',
+      github: 'https://github.com/PPROF2-2022ProgWeb/g20-aula1-beerstock-g20',
     },
     {
       nombre: 'Sitio web Codo a Codo',
@@ -43,6 +46,8 @@ export class AplicacionesService {
       img1: '../../../assets/img/codoacodo03.png',
       img2: '../../../assets/img/codoacodo04.png',
       img3: '',
+      github:
+        'https://github.com/CaroBima/CodoACodo/tree/main/04%20y%2005%20-%20Tp%20Integrador',
     },
     {
       nombre: 'Task Reminder',
@@ -56,6 +61,7 @@ export class AplicacionesService {
       img1: '',
       img2: '',
       img3: '',
+      github: 'https://github.com/CaroBima/TaskReminder',
     },
     {
       nombre: 'Mini Agenda',
@@ -69,6 +75,7 @@ export class AplicacionesService {
       img1: '',
       img2: '',
       img3: '',
+      github: 'https://github.com/CaroBima/MiniAgenda',
     },
     {
       nombre: 'Cálculo de área y perímetro',
@@ -82,6 +89,7 @@ export class AplicacionesService {
       img1: '../../../assets/img/areacuadrado.jpg',
       img2: '../../../assets/img/calculoValidacion.jpg',
       img3: '../../../assets/img/perimetroTriangulo.jpg',
+      github: 'https://github.com/CaroBima/FiguraGeometrica',
     },
   ];
 
