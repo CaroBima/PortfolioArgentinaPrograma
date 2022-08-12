@@ -4,29 +4,31 @@
 
         <p class="col-md-8 fs-4">Mi nombre es Carolina Bima y te cuento un poco más sobre mi:</p>
 
-        <!-- donde vivo -->
-        <button type="button" class="btn btn-outline-primary mb-1 col-md-3 mb-3" (click)="showData('dedonde')">¿Dónde
-            Vivo?</button>
-        <div *ngIf="show[0]" class="card  mb-3 col-md-6">
-            <div class="card">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108956.33750546738!2d-64.26135977054385!3d-31.417279312925714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2zQ8OzcmRvYmE!5e0!3m2!1ses-419!2sar!4v1660140775444!5m2!1ses-419!2sar"
-                    width="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <div class="card-body">
-                    <p class="card-text text-center">Córdoba, Argentina.</p>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-4">
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8"
+                        (click)="showData('formacion')">Formación</button>
                 </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8"
+                        (click)="showData('trabajo')">Trabajos</button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8" (click)="showData('dedonde')">
+                        ¿Dónde Vivo?
+                    </button>
+                </div>
+
             </div>
         </div>
 
-        <br>
+
         <!-- Formación -->
 
-        <button type="button" class="btn btn-outline-primary mb-1 col-md-3 mb-3"
-            (click)="showData('formacion')">Formación</button>
-        <div *ngIf="show[1]" class="card  mb-3 col-md-12">
-            <div class="card">
 
+        <div *ngIf="show[1]" class="card mb-3 animated fadeIn">
+            <div class="card">
                 <div class="card-body">
                     <div class="card-text text-center">
                         <p> Me encuentro terminando el segundo año de la <strong>Tecnicatura en Desarrollo Web y
@@ -73,16 +75,122 @@
             </div>
         </div>
 
-        <br>
-        <br>
-        <br>
+
+        <div *ngIf="show[2]" class="card mb-3 animated fadeIn col-md-12">
+            <div class="card">
+                <!-- card header con links al github y a la page de aplicaciones-->
+                <div class="card-header">
+                    <div class="container text-center mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="../../../assets/img/logos/github-icon.png" class="text-dark" alt=""
+                                    height="80">
+                            </div>
+                            <div class="col-6">
+                                <img src="../../../assets/icons/proyecto2.png" alt="" height="80">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                Ver mi <a class="link-info" href="https://github.com/CaroBima"
+                                    target="_blank">Github</a>
+                            </div>
+                            <div class="col-6">
+                                Ver más info sobre mis <a class="link-info"
+                                    [routerLink]="['/aplicaciones']">proyectos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <!-- carousel -->
+
+                        <div class="card-body">
+                            <p class="card-title text-center fs-4">Estos son algunos de los proyectos que he realizado:
+                            </p>
+                        </div>
+
+                        <div class="container text-center mb-3" style=" max-width: 70%;">
+                            <div id="carouselHome" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner ">
+                                    <div class="carousel-item active justify-content-center">
+                                        <img src="../../../assets/img/Hotel index.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../../../assets/img/codoacodo01.png" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../../../assets/img/Reminder.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../../../assets/img/Cálculo de área y perímetro.jpg"
+                                            class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselHome"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="card-body">
+                            <div class="container text-center mb-3">
+                                <div class="card-body">
+                                    <p class="card-title fs-4">¿En qué estoy trabajando actualemente?:</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="../../../assets/img/logos/minist.png" class="text-dark" alt=""
+                                            height="80">
+                                    </div>
+                                    <div class="col-12 ">
+                                        <p>Desarrollo de aplicación movil en la Dirección de Sistemas del Ministerio de
+                                            Educación de la provincia de Córdoba.</p>
+                                        <p>Tecnologías utilizadas: Ionic</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <img src="../../../assets/img/logos/vates.png" alt="" height="80">
+                                    </div>
+                                    <div class="col-12">
+                                        <p>Analista de Help-Desk y Gestión de Incidencias Masivas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
 
-        <p class="col-md-8">En cuanto a lo laboral, estoy realizando una pasantía como desarrolladora con Ionic
-            en la Dirección de Sistemas del Ministerio de Educación de la Provincia de Córdoba y además trabajo como
-            Analista de Help-Desk y Gestión de Incidencias Masivas en Vates Softwate.</p>
-        <button class="btn btn-primary btn-lg" type="button">Un Botoncito</button>
+
+        <!-- donde vivo -->
+
+        <div *ngIf="show[0]" class="card mb-3 animated fadeIn">
+            <div class="card">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108956.33750546738!2d-64.26135977054385!3d-31.417279312925714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432985f478f5b69%3A0xb0a24f9a5366b092!2zQ8OzcmRvYmE!5e0!3m2!1ses-419!2sar!4v1660140775444!5m2!1ses-419!2sar"
+                    width="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="card-body">
+                    <p class="card-text text-center">Córdoba, Argentina.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
-</div>
