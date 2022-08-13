@@ -12,12 +12,13 @@ public class Proyecto {
     private long idProyecto;
     private String nombre;
     private String descripcion;
-    
-    //fk
-    private Imagen imagenes;
     private String descripcionAmplia;
     private String url;
     private String linkRepo;
+    
+    //fk
+    private Imagen imagenes;
+    
 
     public Proyecto() {
     }
