@@ -18,11 +18,11 @@ public class Tecnologia {
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
    private long idTecnologia;
    
-   private String tecnologia;
+   private String nombreTecnologia;
 
     public Tecnologia(long idTecnologia, String tecnologia) {
         this.idTecnologia = idTecnologia;
-        this.tecnologia = tecnologia;
+        this.nombreTecnologia = tecnologia;
     }
    
    
