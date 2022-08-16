@@ -16,6 +16,7 @@ public class Usuario {
      @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idUsuario;
+     
     private String nombreUsuario;
     private String contrasenia;
     private String email;

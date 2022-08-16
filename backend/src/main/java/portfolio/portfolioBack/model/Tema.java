@@ -14,6 +14,7 @@ public class Tema {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idTema;
+    
     private String tema;
 
     public Tema() {
