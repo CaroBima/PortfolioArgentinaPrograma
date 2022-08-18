@@ -33,7 +33,7 @@ public class CursoService implements ICursoService{
     
     
     @Override
-    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nuevaListaTecn) {
+    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac) {
        Curso curso = this.buscarUnCurso(idCurso);
        
        if(nuevoTit!= null){
@@ -60,10 +60,6 @@ public class CursoService implements ICursoService{
            curso.setDuracionCurso(nuevaDurac);
        }
        
-       if(nuevoLink != null){
-           curso.setLinkImg(nuevoLink);
-       }
-       
        return curso;
     }
     
@@ -73,6 +69,11 @@ public class CursoService implements ICursoService{
     @Override
     public void eliminarUnCurso(Long idCurso) {
         cursoRepo.deleteById(idCurso);
+    }
+
+    @Override
+    public void modificarTecnologias(List<Tecnologia> nvaListaTecnologias) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
