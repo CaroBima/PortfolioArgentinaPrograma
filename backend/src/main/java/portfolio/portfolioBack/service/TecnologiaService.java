@@ -1,37 +1,47 @@
-
-
 package portfolio.portfolioBack.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portfolio.portfolioBack.model.Tecnologia;
+import portfolio.portfolioBack.repository.ITecnologiaRepository;
 
 @Service
 public class TecnologiaService implements ITecnologiaService{
 
+    @Autowired
+    ITecnologiaRepository tecnoRepo;
+    
     @Override
-    public void crearTecnologia(Tecnologia tecnologia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void guardarTecnologia(Tecnologia tecnologia) {
+        tecnoRepo.save(tecnologia);
     }
 
     @Override
     public List<Tecnologia> traerTecnologias() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return tecnoRepo.findAll();
     }
 
     @Override
     public Tecnologia modificarTecnologia(Long idTecnologia, String nvoNomTecnol) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Tecnologia tecno = this.buscarUnaTecnologia(idTecnologia);
+        
+        if(nvoNomTecnol != null){
+            tecno.setNombreTecnologia(nvoNomTecnol);
+        }
+        
+        this.guardarTecnologia(tecno);
+        return tecno;
     }
 
     @Override
     public Tecnologia buscarUnaTecnologia(Long idTecnologia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return tecnoRepo.findById(idTecnologia).orElse(null);
     }
 
     @Override
     public void eliminarTecnologia(Long idTecnologia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        tecnoRepo.deleteById(idTecnologia);
     }
     
 }
