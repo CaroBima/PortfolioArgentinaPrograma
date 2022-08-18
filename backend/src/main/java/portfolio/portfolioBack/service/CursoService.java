@@ -3,37 +3,76 @@
 package portfolio.portfolioBack.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portfolio.portfolioBack.model.Curso;
 import portfolio.portfolioBack.model.Tecnologia;
+import portfolio.portfolioBack.repository.ICursoRepository;
 
 
 @Service
 public class CursoService implements ICursoService{
+    
+    @Autowired
+    private ICursoRepository cursoRepo;
 
     @Override
     public void crearCurso(Curso curso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        cursoRepo.save(curso);
     }
 
     @Override
     public List<Curso> traerCursos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nuevaListaTecn) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return cursoRepo.findAll();
     }
 
     @Override
     public Curso buscarUnCurso(Long idCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return cursoRepo.findById(idCurso).orElse(null);
     }
+    
+    
+    @Override
+    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nuevaListaTecn) {
+       Curso curso = this.buscarUnCurso(idCurso);
+       
+       if(nuevoTit!= null){
+           curso.setTituloCurso(nuevoTit);
+       }
+       
+       if(nuevoNomb != null){
+           curso.setNombreCurso(nuevoNomb);
+       }
+    
+       if(nuevaInstit != null){
+           curso.setInstitucion(nuevaInstit);
+       }
+       
+       if(nuevaDesc != null){
+           curso.setDescripcion(nuevaDesc);
+       }
+       
+       if(nuevoLink != null){
+           curso.setLinkImg(nuevoLink);
+       }
+       
+       if(nuevaDurac != null){
+           curso.setDuracionCurso(nuevaDurac);
+       }
+       
+       if(nuevoLink != null){
+           curso.setLinkImg(nuevoLink);
+       }
+       
+       return curso;
+    }
+    
+
+    
 
     @Override
     public void eliminarUnCurso(Long idCurso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        cursoRepo.deleteById(idCurso);
     }
     
 }
