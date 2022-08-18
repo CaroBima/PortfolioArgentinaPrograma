@@ -1,5 +1,3 @@
-
-
 package portfolio.portfolioBack.service;
 
 import java.util.List;
@@ -17,7 +15,7 @@ public class CursoService implements ICursoService{
     private ICursoRepository cursoRepo;
 
     @Override
-    public void crearCurso(Curso curso) {
+    public void guardarCurso(Curso curso) {
         cursoRepo.save(curso);
     }
 
@@ -33,7 +31,7 @@ public class CursoService implements ICursoService{
     
     
     @Override
-    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac) {
+    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nvaListaTecnol) {
        Curso curso = this.buscarUnCurso(idCurso);
        
        if(nuevoTit!= null){
@@ -59,11 +57,13 @@ public class CursoService implements ICursoService{
        if(nuevaDurac != null){
            curso.setDuracionCurso(nuevaDurac);
        }
+       if(nvaListaTecnol != null){
+           this.modificarTecnologias(nvaListaTecnol);
+       }
        
+       this.guardarCurso(curso);
        return curso;
     }
-    
-
     
 
     @Override
@@ -71,6 +71,7 @@ public class CursoService implements ICursoService{
         cursoRepo.deleteById(idCurso);
     }
 
+    //permite modificar las tecnologías vistas en el curso (Ej: java, angular, css, etc)
     @Override
     public void modificarTecnologias(List<Tecnologia> nvaListaTecnologias) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

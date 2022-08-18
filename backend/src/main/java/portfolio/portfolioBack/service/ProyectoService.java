@@ -3,36 +3,66 @@
 package portfolio.portfolioBack.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portfolio.portfolioBack.model.Imagen;
 import portfolio.portfolioBack.model.Proyecto;
+import portfolio.portfolioBack.repository.IProyectoRepository;
 
  @Service
 public class ProyectoService implements IProyectoService{
 
+    @Autowired
+    private IProyectoRepository proyectoRepo;
+             
     @Override
-    public void crearProyecto(Proyecto proyecto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void guardarProyecto(Proyecto proyecto) {
+        proyectoRepo.save(proyecto);
     }
 
     @Override
     public List<Proyecto> traerProyectos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return proyectoRepo.findAll();
     }
 
     @Override
     public Proyecto modificarProyecto(Long idProyecto, String nvoNomb, String nuevaDesc, String nuevaDescAmpl, String nvaUrl, String nvoLinkRepo, List<Imagen> nvaListaImg) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Proyecto proyecto = this.buscarUnProyecto(idProyecto);
+        
+        if(nvoNomb != null){
+            proyecto.setNombre(nvoNomb);
+        }
+        
+        if(nuevaDesc != null){
+            proyecto.setDescripcion(nuevaDesc);
+        }
+        
+        if(nuevaDescAmpl != null){
+            proyecto.setDescripcionAmplia(nuevaDescAmpl);
+        }
+        
+        if(nvaUrl != null){
+            proyecto.setUrl(nvaUrl);
+        }
+        if(nvoLinkRepo != null){
+            proyecto.setLinkRepo(nvoLinkRepo);
+        }
+        if(nvaListaImg != null){
+            proyecto.setImagenes(nvaListaImg);
+        }
+       
+        this.guardarProyecto(proyecto);
+        return proyecto;
     }
 
     @Override
     public Proyecto buscarUnProyecto(Long idProyecto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return proyectoRepo.findById(idProyecto).orElse(null);
     }
 
     @Override
     public void eliminarUnProyecto(Long idProyecto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        proyectoRepo.deleteById(idProyecto);
     }
 
    
