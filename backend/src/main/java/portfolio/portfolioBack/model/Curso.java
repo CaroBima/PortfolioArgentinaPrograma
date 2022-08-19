@@ -30,6 +30,7 @@ public class Curso {
     private String descripcion;
     private String linkImg;
     private String duracionCurso;
+    private String linkCurso;
    
 //FK
     @JoinTable(name = "temaxcurso", joinColumns = {
@@ -52,7 +53,7 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso(long idCurso, String tituloCurso, String nombreCurso, String institucion, String descripcion, String linkImg, String duracionCurso, List<Tema> temas, List<Tecnologia> tecnologia) {
+    public Curso(long idCurso, String tituloCurso, String nombreCurso, String institucion, String descripcion, String linkImg, String duracionCurso, String linkCurso, List<Tema> temas, List<Tecnologia> tecnologia) {
         this.idCurso = idCurso;
         this.tituloCurso = tituloCurso;
         this.nombreCurso = nombreCurso;
@@ -60,10 +61,12 @@ public class Curso {
         this.descripcion = descripcion;
         this.linkImg = linkImg;
         this.duracionCurso = duracionCurso;
+        this.linkCurso = linkCurso;
         this.temas = temas;
         this.tecnologia = tecnologia;
     }
 
+ 
  
     
     

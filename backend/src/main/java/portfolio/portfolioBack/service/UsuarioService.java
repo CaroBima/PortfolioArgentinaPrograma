@@ -2,20 +2,25 @@
 
 package portfolio.portfolioBack.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portfolio.portfolioBack.model.Usuario;
+import portfolio.portfolioBack.repository.IUsuarioRepository;
 
 @Service
 public class UsuarioService implements IUsuarioService{
 
+    @Autowired
+    IUsuarioRepository usuarioRepo;
+    
     @Override
     public void crearUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        usuarioRepo.save(usuario);
     }
 
     @Override
     public Usuario buscarUnUsuario(Long idUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return usuarioRepo.findById(idUsuario).orElse(null);
     }
     
 }

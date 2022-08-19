@@ -33,7 +33,7 @@ public class TecnologiaService implements ITecnologiaService{
         this.guardarTecnologia(tecno);
         return tecno;
     }
-
+ 
     @Override
     public Tecnologia buscarUnaTecnologia(Long idTecnologia) {
         return tecnoRepo.findById(idTecnologia).orElse(null);
