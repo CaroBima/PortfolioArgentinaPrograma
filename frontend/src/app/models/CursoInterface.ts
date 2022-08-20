@@ -1,11 +1,12 @@
 export interface ICursoInterface {
-  titulo: string;
-  nombre: string;
+  idCurso: number;
+  tituloCurso: string;
+  nombreCurso: string;
   institucion: string;
   descripcion: string;
-  img: string;
-  temas: string;
-  tecnologias: string;
-  duracion: string;
-  link: string;
+  linkImg: string;
+  duracionCurso: string;
+  linkCurso: string;
+  listaTemas: string[];
+  listaTecnologias: string[];
 }

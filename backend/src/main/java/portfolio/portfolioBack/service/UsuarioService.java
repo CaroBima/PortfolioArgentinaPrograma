@@ -25,6 +25,7 @@ public class UsuarioService implements IUsuarioService{
     }
     
     //metodo que permite buscar un usuario por nombre y clave
+    @Override
     public boolean logueoUsuario (Usuario usuario){
         boolean logueoOk = false;
         List<Usuario> listaUsuarios = usuarioRepo.findAll();
