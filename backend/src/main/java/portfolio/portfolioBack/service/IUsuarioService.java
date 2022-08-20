@@ -12,5 +12,6 @@ public interface IUsuarioService {
     //public List<Usuario> traerUsuarios();
     //public Usuario modificarUsuario(Long idUsuario);
     public Usuario buscarUnUsuario(Long idUsuario);
+    public boolean logueoUsuario (Usuario usuario);
     //public void eliminarUnUsuario(Long idUsuario);
 }

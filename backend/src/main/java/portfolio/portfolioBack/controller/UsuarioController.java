@@ -15,15 +15,6 @@ public class UsuarioController {
     
     @PostMapping("/login")
     private boolean loginUsuario(@RequestBody Usuario usuario){
-        Usuario usu = usuarioService.buscarUnUsuario(usuario.getIdUsuario());
-        boolean logueoOk;
-        
-        if(usu!= null && usuario.getNombreUsuario().equals(usu.getNombreUsuario()) && usuario.getContrasenia().equals(usu.getContrasenia())){
-            return true;
-        }else{
-            return false;
-        }
+       return usuarioService.logueoUsuario(usuario);
     }
-    
-    
 }
