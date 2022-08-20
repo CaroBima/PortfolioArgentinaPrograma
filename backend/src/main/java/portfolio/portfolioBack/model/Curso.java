@@ -1,5 +1,6 @@
 package portfolio.portfolioBack.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,11 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+
+
+
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -22,7 +33,7 @@ public class Curso {
     //pk 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long idCurso;
+    private Long idCurso;
     
     private String tituloCurso;
     private String nombreCurso;
@@ -32,43 +43,24 @@ public class Curso {
     private String duracionCurso;
     private String linkCurso;
    
-//FK
+
+    
+    
+    @OneToMany 
+    (cascade = {CascadeType.MERGE})
     @JoinTable(name = "temaxcurso", joinColumns = {
-            @JoinColumn(name = "idCurso", nullable = false)},
+            @JoinColumn(name = "idCurso", nullable = false, insertable = true)},
             inverseJoinColumns = {
-            @JoinColumn(name = "idTema", nullable = false)})
-    @ManyToMany 
-    (cascade = CascadeType.MERGE)
-    private List<Tema> temas;
+            @JoinColumn(name = "idTema", nullable = false, insertable = true)})
+    private List<Tema> listaTemas; // = new ArrayList<Tema>();
     
-    //Fk
+  
+    @OneToMany  (cascade ={CascadeType.MERGE} ) 
     @JoinTable(name = "tecnolxcurso", joinColumns = {
-            @JoinColumn(name = "idCurso", nullable = false)},
+            @JoinColumn(name = "idCurso", nullable = false, insertable = true)},
             inverseJoinColumns = {
-            @JoinColumn(name = "idTecnologia", nullable = false)})
-    @ManyToMany 
-    (cascade = CascadeType.MERGE)
-    private List<Tecnologia> tecnologia;
+            @JoinColumn(name = "idTecnologia", nullable = false, insertable = true)})
+    private List<Tecnologia> listaTecnologias; //= new ArrayList<Tecnologia>();
 
-    public Curso() {
-    }
-
-    public Curso(long idCurso, String tituloCurso, String nombreCurso, String institucion, String descripcion, String linkImg, String duracionCurso, String linkCurso, List<Tema> temas, List<Tecnologia> tecnologia) {
-        this.idCurso = idCurso;
-        this.tituloCurso = tituloCurso;
-        this.nombreCurso = nombreCurso;
-        this.institucion = institucion;
-        this.descripcion = descripcion;
-        this.linkImg = linkImg;
-        this.duracionCurso = duracionCurso;
-        this.linkCurso = linkCurso;
-        this.temas = temas;
-        this.tecnologia = tecnologia;
-    }
-
- 
- 
-    
-    
-    
+       
 }
