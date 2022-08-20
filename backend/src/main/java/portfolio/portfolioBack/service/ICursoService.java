@@ -13,7 +13,7 @@ public interface ICursoService {
     public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nvaListaTecnol);
     public Curso buscarUnCurso(Long idCurso);
     public void eliminarUnCurso(Long idCurso);
-    public void modificarTecnologias(List<Tecnologia> nvaListaTecnologias);
+    public void modificarTecnolCurso(List<Tecnologia> nvaListaTecnologias);
     
     
 }

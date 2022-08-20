@@ -58,7 +58,7 @@ public class CursoService implements ICursoService{
            curso.setDuracionCurso(nuevaDurac);
        }
        if(nvaListaTecnol != null){
-           this.modificarTecnologias(nvaListaTecnol);
+           this.modificarTecnolCurso(nvaListaTecnol);
        }
        
        this.guardarCurso(curso);
@@ -71,10 +71,13 @@ public class CursoService implements ICursoService{
         cursoRepo.deleteById(idCurso);
     }
 
-    //permite modificar las tecnologías vistas en el curso (Ej: java, angular, css, etc)
+    
+//permite modificar las tecnologías vistas en el curso (Ej: java, angular, css, etc)
     @Override
-    public void modificarTecnologias(List<Tecnologia> nvaListaTecnologias) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void modificarTecnolCurso(List<Tecnologia> nvaListaTecnologias) {
+        //recorrer la lista, encontrar tecnologia que no esta más y borrarla de la tabla intermedia
+        //ver si hay tecnologias nuevas que no estaban y agregarlas
     }
+    
     
 }
