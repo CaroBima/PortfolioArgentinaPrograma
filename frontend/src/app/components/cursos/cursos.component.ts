@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NumberValueAccessor } from '@angular/forms';
 
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { CursosService } from 'src/app/services/cursos.service';
@@ -9,7 +10,7 @@ import { CursosService } from 'src/app/services/cursos.service';
   styleUrls: ['./cursos.component.css'],
 })
 export class CursosComponent implements OnInit {
-  cursos: ICursoInterface[] = [];
+  public cursos: ICursoInterface[] = [];
   buscador: any;
   banderaBusqueda: boolean;
   tecnologia: string;
@@ -19,8 +20,13 @@ export class CursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.cursos = this._cursosService.getCursos();
-    console.log(this._cursosService.getCursos());
+    this._cursosService.getCursos().subscribe((respuesta) => {
+      respuesta.forEach((x) => {
+        this.cursos.push(x);
+      });
+      return respuesta;
+    });
+    console.log(this.cursos);
   }
 
   //permite traer los cursos de acuerdo al string escrito en el buscador
@@ -36,5 +42,10 @@ export class CursosComponent implements OnInit {
     this.banderaBusqueda = false;
     this.buscador = '';
     this.tecnologia = '';*/
+  }
+
+  //para obtener los temas y las tecnolgias
+  public obtenerValorPorPosicion(obj: any, posicion: number): any {
+    return Object.keys(obj)[posicion];
   }
 }

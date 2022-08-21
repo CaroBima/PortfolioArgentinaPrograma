@@ -13,7 +13,6 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root',
 })
 export class CursosService {
-  otro: any;
   private cursos: ICursoInterface[] = [];
   private buscarcursosUrl;
   httpOptions = {
@@ -28,22 +27,16 @@ export class CursosService {
     this.buscarcursosUrl = 'http://localhost:8080/buscarcursos';
   }
 
-  //devuelve todos los cursos del vector
-  // public getCursos() {
-  //  return this.cursos;
-  //  }
-
-  public getCursos() {
-    return this.http
-      .get<ICursoInterface[]>(this.buscarcursosUrl, this.httpOptions)
-      .subscribe((respuesta) => {
-        console.log(respuesta);
-        return respuesta;
-      });
+  //devuelve todos los cursos almacenados en la bbdd
+  public getCursos(): Observable<ICursoInterface[]> {
+    return this.http.get<ICursoInterface[]>(
+      this.buscarcursosUrl,
+      this.httpOptions
+    );
   }
 
   //permite buscar un curso de acuerdo a la tecnologia buscada en el searchbar
-  /* public buscadorCurso(tecnologia: string) {
+  /*public buscadorCurso(tecnologia: string) {
     let cursosArray: ICursoInterface[] = [];
     tecnologia = tecnologia.toLowerCase();
 

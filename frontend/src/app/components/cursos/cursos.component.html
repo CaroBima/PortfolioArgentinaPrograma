@@ -4,13 +4,14 @@
             <a class="navbar-brand">
                 <h1 class="display-5 fw-bold">Cursos realizados</h1>
             </a>
+            <!-- Buscador  
             <form class="d-flex" role="search">
                 <input class="form-control me-2" [(ngModel)]="buscador" type="text" placeholder="Buscar x tecnología"
                     (keyup.enter)="buscarTecnologia(buscarTecnol.value)" #buscarTecnol name="buscarTecnol">
                 <button (click)="buscarTecnologia(buscarTecnol.value)" class="btn btn-outline-primary"
                     type="button">Buscar</button>
                 <button (click)="limpiarBusqueda()" class="btn btn-outline-primary ms-2" type="button">Limpiar</button>
-            </form>
+            </form>-->
         </div>
     </nav>
 
@@ -34,29 +35,36 @@
     </ng-template>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        <!-- Cards de proyectos
+        <!-- Cards de proyectos -->
         <div class="col" *ngFor="let curso of cursos;">
             <div class="card h-100">
-                <img src="{{curso.img}}" class="card-img-top" alt="{{curso.nombre}}">
+                <img src="{{curso.linkImg}}" class="card-img-top" alt="{{curso.nombreCurso}}">
                 <div class="card-body">
-                    <h5 class="card-title">{{curso.titulo}}</h5>
+                    <h5 class="card-title">{{curso.tituloCurso}}</h5>
                     <p class="card-text">
-                    <p *ngIf="(curso.nombre!='')"><strong>{{curso.nombre}}</strong> </p>
-                    <p *ngIf="(curso.tecnologias!='')"><strong>Tecnologías:</strong> {{curso.tecnologias}}</p>
-                    <p *ngIf="(curso.temas!='')"><strong>Temario:</strong> {{curso.temas}}</p>
+                    <p *ngIf="(curso.nombreCurso!='')"><strong>{{curso.nombreCurso}}</strong> </p>
+                    <p><strong>Tecnologías:</strong></p>
+                    <p *ngFor="let c of curso.listaTecnologias; index as i">
+                        {{c[obtenerValorPorPosicion(c, 1)]}}
+                    </p>
+                    <p><strong>Temario:</strong></p>
+                    <p *ngFor="let t of curso.listaTemas; index as i">
+                        {{t[obtenerValorPorPosicion(t, 1)]}}
+                    </p>
                     <p *ngIf="(curso.descripcion!='')"><strong>Descripción:</strong> {{curso.descripcion}}</p>
                     <p *ngIf="(curso.institucion!='')"><strong>Institución:</strong> {{curso.institucion}}</p>
-                    <p *ngIf="(curso.duracion!='')"><strong>Duración:</strong> {{curso.duracion}}</p>
+                    <p *ngIf="(curso.duracionCurso!='')"><strong>Duración:</strong> {{curso.duracionCurso}}</p>
                 </div>
-                <div class="card-footer" *ngIf="(curso.link!='')">
+                <div class="card-footer" *ngIf="(curso.linkCurso!='')">
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <a class="btn btn-outline-primary" href="{{curso.link}}" role="button" target="_blank">Sitio
+                        <a class="btn btn-outline-primary" href="{{curso.linkCurso}}" role="button"
+                            target="_blank">Sitio
                             web</a>
                     </div>
 
                 </div>
             </div>
-        </div>-->
+        </div>
 
     </div>
 </div>
