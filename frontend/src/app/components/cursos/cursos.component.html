@@ -43,13 +43,17 @@
                     <h5 class="card-title">{{curso.tituloCurso}}</h5>
                     <p class="card-text">
                     <p *ngIf="(curso.nombreCurso!='')"><strong>{{curso.nombreCurso}}</strong> </p>
-                    <p><strong>Tecnologías:</strong></p>
-                    <p *ngFor="let c of curso.listaTecnologias; index as i">
-                        {{c[obtenerValorPorPosicion(c, 1)]}}
+                    <p class="mb-0"><strong>Tecnologías:</strong></p>
+                    <p>
+                        <ng-container *ngFor="let c of curso.listaTecnologias; index as i">
+                            -{{c[obtenerValorPorPosicion(c, 1)]}}
+                        </ng-container>
                     </p>
-                    <p><strong>Temario:</strong></p>
-                    <p *ngFor="let t of curso.listaTemas; index as i">
-                        {{t[obtenerValorPorPosicion(t, 1)]}}
+                    <p class="mb-0"><strong>Temario:</strong></p>
+                    <p>
+                        <ng-container *ngFor="let t of curso.listaTemas; index as i">
+                            -{{t[obtenerValorPorPosicion(t, 1)]}}
+                        </ng-container>
                     </p>
                     <p *ngIf="(curso.descripcion!='')"><strong>Descripción:</strong> {{curso.descripcion}}</p>
                     <p *ngIf="(curso.institucion!='')"><strong>Institución:</strong> {{curso.institucion}}</p>

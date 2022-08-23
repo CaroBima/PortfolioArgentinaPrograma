@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpHeaders,
-} from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ICursoInterface } from '../models/CursoInterface';
 import { Observable } from 'rxjs/internal/Observable';
@@ -14,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class CursosService {
   private cursos: ICursoInterface[] = [];
-  private buscarcursosUrl;
+  private url;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -24,15 +19,19 @@ export class CursosService {
   };
 
   constructor(private http: HttpClient) {
-    this.buscarcursosUrl = 'http://localhost:8080/buscarcursos';
+    this.url = 'http://localhost:8080';
   }
 
   //devuelve todos los cursos almacenados en la bbdd
   public getCursos(): Observable<ICursoInterface[]> {
-    return this.http.get<ICursoInterface[]>(
-      this.buscarcursosUrl,
-      this.httpOptions
-    );
+    let endpoint = this.url + '/buscarcursos';
+    return this.http.get<ICursoInterface[]>(endpoint, this.httpOptions);
+  }
+
+  //metodo para realizar el borrado de alguno de los cursos
+  public borrarCurso(idCurso: number) {
+    let endpoint = this.url + '/borrarcurso?idCurso=' + idCurso;
+    this.http.delete(endpoint, this.httpOptions);
   }
 
   //permite buscar un curso de acuerdo a la tecnologia buscada en el searchbar
