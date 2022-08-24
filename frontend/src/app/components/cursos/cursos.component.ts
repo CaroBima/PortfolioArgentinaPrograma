@@ -33,15 +33,28 @@ export class CursosComponent implements OnInit {
   public buscarTecnologia(tecnologia: string) {
     /*this.cursos = this._cursosService.buscadorCurso(tecnologia);
     this.tecnologia = tecnologia;
-    this.banderaBusqueda = true;*/
+    */
+    let cursosArray: ICursoInterface[] = [];
+    for (let curso of this.cursos) {
+      for (let tecno of curso.listaTecnologias) {
+        //tecno = tecno.toLowerCase();
+        console.log(tecno);
+
+        if (tecno.includes(tecnologia)) {
+          cursosArray.push(curso);
+        }
+      }
+    }
+    return cursosArray;
+    this.banderaBusqueda = true;
   }
 
   //metodo del boton busqueda para limpiar la busqueda y traer todos los cursos nuevamente
   limpiarBusqueda() {
-    /*  this.cursos = this._cursosService.getCursos();
+    this._cursosService.getCursos();
     this.banderaBusqueda = false;
     this.buscador = '';
-    this.tecnologia = '';*/
+    this.tecnologia = '';
   }
 
   //para obtener los temas y las tecnolgias
