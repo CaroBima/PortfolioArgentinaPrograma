@@ -11,6 +11,7 @@ import { CursosService } from 'src/app/services/cursos.service';
 })
 export class CursosComponent implements OnInit {
   public cursos: ICursoInterface[] = [];
+  public cursosArray: ICursoInterface[] = [];
   buscador: any;
   banderaBusqueda: boolean;
   tecnologia: string;
@@ -20,41 +21,49 @@ export class CursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.traerCusros();
+    console.log(this.cursos);
+  }
+
+  public traerCusros() {
     this._cursosService.getCursos().subscribe((respuesta) => {
       respuesta.forEach((x) => {
         this.cursos.push(x);
       });
       return respuesta;
     });
-    console.log(this.cursos);
   }
-
   //permite traer los cursos de acuerdo al string escrito en el buscador
   public buscarTecnologia(tecnologia: string) {
     /*this.cursos = this._cursosService.buscadorCurso(tecnologia);
     this.tecnologia = tecnologia;
     */
-    let cursosArray: ICursoInterface[] = [];
+
+    //this.traerCusros(); //carga todos los cursos
+    this.cursosArray.length = 0;
     for (let curso of this.cursos) {
       for (let tecno of curso.listaTecnologias) {
-        //tecno = tecno.toLowerCase();
-        console.log(tecno);
+        let nombreTecno = tecno[this.obtenerValorPorPosicion(tecno, 1)];
 
-        if (tecno.includes(tecnologia)) {
-          cursosArray.push(curso);
+        nombreTecno = nombreTecno.toLowerCase();
+        console.log(nombreTecno);
+        if (nombreTecno.includes(tecnologia.toLowerCase())) {
+          this.cursosArray.push(curso);
+          console.log(curso);
         }
       }
     }
-    return cursosArray;
-    this.banderaBusqueda = true;
+    console.log(this.cursosArray.length);
+    this.banderaBusqueda = true; //falta hacer que los muestre
   }
 
   //metodo del boton busqueda para limpiar la busqueda y traer todos los cursos nuevamente
   limpiarBusqueda() {
-    this._cursosService.getCursos();
+    this.cursosArray.length = 0;
     this.banderaBusqueda = false;
     this.buscador = '';
     this.tecnologia = '';
+    console.log(this.cursosArray.length);
   }
 
   //para obtener los temas y las tecnolgias
