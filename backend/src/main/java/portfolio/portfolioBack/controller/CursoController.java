@@ -23,6 +23,7 @@ public class CursoController {
     
     @PostMapping("/cursos/nuevocurso")
     public void guardarCurso(@RequestBody Curso curso){
+        
         cursoService.guardarCurso(curso);
     }
     

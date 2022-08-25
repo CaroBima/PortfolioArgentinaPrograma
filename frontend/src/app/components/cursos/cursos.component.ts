@@ -35,21 +35,17 @@ export class CursosComponent implements OnInit {
   }
   //permite traer los cursos de acuerdo al string escrito en el buscador
   public buscarTecnologia(tecnologia: string) {
-    /*this.cursos = this._cursosService.buscadorCurso(tecnologia);
-    this.tecnologia = tecnologia;
-    */
+    this.cursosArray = []; //vacio el array
+    this.cursosArray = this.cursos; //lo cargo con el listado de cursos
 
-    //this.traerCusros(); //carga todos los cursos
-    this.cursosArray.length = 0;
-    for (let curso of this.cursos) {
+    this.cursos = []; //vacio el array original de cursos para cargarlo en el for
+    for (let curso of this.cursosArray) {
       for (let tecno of curso.listaTecnologias) {
         let nombreTecno = tecno[this.obtenerValorPorPosicion(tecno, 1)];
-
         nombreTecno = nombreTecno.toLowerCase();
         console.log(nombreTecno);
         if (nombreTecno.includes(tecnologia.toLowerCase())) {
-          this.cursosArray.push(curso);
-          console.log(curso);
+          this.cursos.push(curso);
         }
       }
     }
@@ -59,11 +55,11 @@ export class CursosComponent implements OnInit {
 
   //metodo del boton busqueda para limpiar la busqueda y traer todos los cursos nuevamente
   limpiarBusqueda() {
-    this.cursosArray.length = 0;
+    this.cursos.length = 0;
+    this.traerCusros(); //vuelve a traer el listado de cursos
     this.banderaBusqueda = false;
     this.buscador = '';
     this.tecnologia = '';
-    console.log(this.cursosArray.length);
   }
 
   //para obtener los temas y las tecnolgias

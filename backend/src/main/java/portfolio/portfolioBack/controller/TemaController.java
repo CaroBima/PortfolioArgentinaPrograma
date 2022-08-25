@@ -18,6 +18,7 @@ public class TemaController {
     
     @PostMapping("/nuevoTema")
     public void guardarTecnologia(@RequestBody Tema tema){
+        //es necesario validar si el tema ya se encuentra para evitar que crashee la bbdd
         temaService.guardarTema(tema);
     }
 }
