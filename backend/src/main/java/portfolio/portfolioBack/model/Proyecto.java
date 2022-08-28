@@ -11,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -27,8 +30,10 @@ public class Proyecto {
     private String nombre;
     private String descripcion;
     private String descripcionAmplia;
-    private String url;
+    private String imgPrev; //imagen de previsualizacion del curso
+    private String url; 
     private String linkRepo;
+    
     
     //fk
      @JoinTable(name = "imagenxproyecto", joinColumns = {
@@ -40,18 +45,8 @@ public class Proyecto {
     private List<Imagen> imagenes;
     
 
-    public Proyecto() {
-    }
 
-    public Proyecto(long idProyecto, String nombre, String descripcion, String descripcionAmplia, String url, String linkRepo, List<Imagen> imagenes) {
-        this.idProyecto = idProyecto;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.descripcionAmplia = descripcionAmplia;
-        this.url = url;
-        this.linkRepo = linkRepo;
-        this.imagenes = imagenes;
-    }
+     
 
   
 
