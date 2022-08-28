@@ -1,8 +1,12 @@
 package portfolio.portfolioBack.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +22,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tema")
 public class Tema {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idTema;
@@ -27,8 +31,7 @@ public class Tema {
     @Column(unique=true)
     private String tema;
     
-//    @ManyToMany (mappedBy = "listaTemas")
+//    @JsonBackReference
+//    @ManyToMany(mappedBy = "listaTemas", fetch=FetchType.LAZY)
 //    private List<Curso> listaCursos;
-
-    
 }

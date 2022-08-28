@@ -1,6 +1,7 @@
 package portfolio.portfolioBack.model;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -26,7 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "curso")
+@Table(name="curso")
 public class Curso {
     
     @Id
@@ -41,24 +43,21 @@ public class Curso {
     private String duracionCurso;
     private String linkCurso;
    
-
-    
-    
-    @OneToMany 
-    (cascade = {CascadeType.MERGE})
-    @JoinTable(name = "temaxcurso", joinColumns = {
-            @JoinColumn(name = "idCurso", nullable = false, insertable = true)},
+   @JoinTable(name = "temasxcurso", joinColumns = {
+            @JoinColumn(name = "idCurso", nullable = false)},
             inverseJoinColumns = {
-            @JoinColumn(name = "idTema", nullable = false, insertable = true)})
-    private List<Tema> listaTemas; // = new ArrayList<Tema>();
+            @JoinColumn(name = "idTema", nullable = false)})
+    @ManyToMany 
+    (cascade = CascadeType.MERGE)
+    private List<Tema> listaTemas; 
     
-  
-    @OneToMany  (cascade ={CascadeType.MERGE} ) 
-    @JoinTable(name = "tecnolxcurso", joinColumns = {
-            @JoinColumn(name = "idCurso", nullable = false, insertable = true)},
+   
+    @JoinTable(name = "tecnoxcurso", joinColumns = {
+            @JoinColumn(name = "idCurso", nullable = false)},
             inverseJoinColumns = {
-            @JoinColumn(name = "idTecnologia", nullable = false, insertable = true)})
-    private List<Tecnologia> listaTecnologias; //= new ArrayList<Tecnologia>();
+            @JoinColumn(name = "idTecnologia", nullable = false)})
+    @ManyToMany 
+    private List<Tecnologia> listaTecnologias; 
 
        
 }

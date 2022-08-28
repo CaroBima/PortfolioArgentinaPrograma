@@ -29,6 +29,7 @@ export class CursosComponent implements OnInit {
     this._cursosService.getCursos().subscribe((respuesta) => {
       respuesta.forEach((x) => {
         this.cursos.push(x);
+        console.log(x);
       });
       return respuesta;
     });
