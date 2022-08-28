@@ -34,6 +34,7 @@ export class CursosComponent implements OnInit {
       return respuesta;
     });
   }
+
   //permite traer los cursos de acuerdo al string escrito en el buscador
   public buscarTecnologia(tecnologia: string) {
     this.cursosArray = []; //vacio el array
@@ -50,8 +51,8 @@ export class CursosComponent implements OnInit {
         }
       }
     }
-    console.log(this.cursosArray.length);
-    this.banderaBusqueda = true; //falta hacer que los muestre
+
+    this.banderaBusqueda = true;
   }
 
   //metodo del boton busqueda para limpiar la busqueda y traer todos los cursos nuevamente
