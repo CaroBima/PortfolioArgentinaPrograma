@@ -12,7 +12,7 @@ const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'aplicaciones', component: AplicacionesComponent },
-  { path: 'aplicacion/:id', component: AplicacionComponent },
+  { path: 'aplicacion/:app', component: AplicacionComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'mistack', component: MiStackComponent },
   { path: 'inicioSesion', component: InicioSesionComponent },

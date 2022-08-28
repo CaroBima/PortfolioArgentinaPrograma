@@ -23,7 +23,7 @@ public class ImagenController {
         return imagenService.traerImagenes(); 
     }
     
-       @PostMapping("/proyecto/nuevaimagen")
+       @PostMapping("/proyecto/guardarimagen")
     public void guardarProyecto(@RequestBody Imagen imagen){
         imagenService.guardarImagen(imagen);
     }

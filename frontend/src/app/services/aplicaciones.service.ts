@@ -15,7 +15,6 @@ export class AplicacionesService {
       'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, HEAD, OPTIONS',
     }),
   };
-  private aplicaciones: Aplicacion[] = [];
 
   constructor(private http: HttpClient) {
     this.url = 'http://localhost:8080';
@@ -28,7 +27,8 @@ export class AplicacionesService {
   }
 
   //devuelve una aplicacion puntual por el id, se usa para mostrar el detalle de la app
-  public getAplicacion(id: number) {
-    return this.aplicaciones[id];
+  public getAplicacion(id: number): Observable<Aplicacion> {
+    let endpoint = this.url + '/buscarproyecto';
+    return this.http.get<Aplicacion>(endpoint, this.httpOptions);
   }
 }

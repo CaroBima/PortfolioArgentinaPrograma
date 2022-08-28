@@ -1,12 +1,10 @@
 export interface Aplicacion {
+  idProyecto: number;
   nombre: string;
   descripcion: string;
+  descripcionAmplia: string;
   imgPrev: string;
-  descripAmplia: string;
   url: string;
-  repo: string;
-  img1: string;
-  img2: string;
-  img3: string;
-  github: string;
+  linkRepo: string;
+  listaImagenes: string[];
 }

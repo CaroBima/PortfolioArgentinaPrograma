@@ -14,11 +14,11 @@ export class AplicacionesComponent implements OnInit {
   constructor(private _aplicacionesService: AplicacionesService) {}
 
   ngOnInit(): void {
-    this.traerCusros();
+    this.traerAplicaciones();
     console.log(this.aplicaciones);
   }
 
-  public traerCusros() {
+  public traerAplicaciones() {
     this._aplicacionesService.getAplicaciones().subscribe((respuesta) => {
       respuesta.forEach((x) => {
         this.aplicaciones.push(x);
