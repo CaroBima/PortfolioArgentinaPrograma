@@ -40,3 +40,13 @@
 .tamanio {
   max-width: 80% !important;
 }
+
+.tamanio-60 {
+  max-width: 60% !important;
+  display: block !important;
+  margin: 10px auto !important;
+}
+
+.card-personalizada {
+  width: 100%;
+}

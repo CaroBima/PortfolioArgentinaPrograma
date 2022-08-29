@@ -4,18 +4,19 @@
 
         <p class="col-md-8 fs-4">Mi nombre es Carolina Bima y te cuento un poco más sobre mi:</p>
 
-        <div class="container text-center">
+        <div class="container-fluid text-center">
             <div class="row">
                 <div class="col-4">
-                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8"
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-12"
                         (click)="showData('formacion')">Formación</button>
                 </div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8"
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-12"
                         (click)="showData('trabajo')">Trabajos</button>
                 </div>
                 <div class="col-4">
-                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-8" (click)="showData('dedonde')">
+                    <button type="button" class="btn btn-outline-primary mb-1 mb-3 col-12"
+                        (click)="showData('dedonde')">
                         ¿Dónde Vivo?
                     </button>
                 </div>
@@ -25,7 +26,6 @@
 
 
         <!-- Formación -->
-
 
         <div *ngIf="show[1]" class="card mb-3 animated fadeIn">
             <div class="card">
@@ -38,29 +38,34 @@
                             <strong>Full-Stack con Java:</strong>
                         </p>
                         <div class="container text-center mb-3">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="../../../assets/img/logos/argprogosc.png" class="text-dark" alt=""
-                                        height="80">
+                            <div class="card-group container-fluid">
+
+                                <div class="card text-bg-light m-1">
+                                    <img src="../../../assets/img/logos/argprogosc.png" class="card-img-top tamanio-60 "
+                                        alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text"><strong> #YoProgramo </strong></p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <img src="../../../assets/img/logos/silicon-misiones-logo.png" alt="" height="80">
+
+                                <div class="card text-bg-light m-1">
+                                    <img src="../../../assets/img/logos/silicon-misiones-logo.png"
+                                        class="card-img-top tamanio-60" alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text"> <strong>PoloTic</strong> (Misiones)</p>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <img src="../../../assets/img/logos/logocodoacodo.png" alt="" height="70">
+
+                                <div class="card text-bg-light m-1 ">
+                                    <img src="../../../assets/img/logos/logocodoacodo.png"
+                                        class="card-img-top  tamanio-60 " alt="...">
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>Codo a Codo </strong>(Caba)</p>
+                                    </div>
                                 </div>
+
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <strong> #YoProgramo </strong> – Segunda parte del Argentina Programa
-                                </div>
-                                <div class="col">
-                                    <strong>PoloTic</strong> (Misiones)
-                                </div>
-                                <div class="col">
-                                    <strong>Codo a Codo </strong>(Caba)
-                                </div>
-                            </div>
+
                         </div>
                         <p class="">Pero estos no son los únicos: podés encontrar un detalle de la temática
                             aprendida en
