@@ -6,10 +6,13 @@
         <!-- Comienzo del carousel-->
         <div class="container-fluid tamanio" style=" max-width: 70%;">
             <div id="carouselExampleFade" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel">
-                <div class="carousel-inner" *ngFor="let imagen of arrayImagenes; index as i">
+                <div class="carousel-inner">
+
                     <div class="carousel-item active justify-content-center imagenCar">
-                        <img src="{{imagen[obtenerValorPorPosicion(imagen, 1)].urlImagen}}}" class="d-block w-100"
-                            alt="...">
+                        <img src="{{aplicacion.imgPrev}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" *ngFor="let imagen of arrayImagenes; index as i">
+                        <img src="{{imagen.urlImagen}}" class="d-block w-100" alt="...">
                     </div>
 
                 </div>
