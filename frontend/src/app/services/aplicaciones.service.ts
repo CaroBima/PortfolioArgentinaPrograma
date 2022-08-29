@@ -28,7 +28,7 @@ export class AplicacionesService {
 
   //devuelve una aplicacion puntual por el id, se usa para mostrar el detalle de la app
   public getAplicacion(id: number): Observable<Aplicacion> {
-    let endpoint = this.url + '/buscarproyecto';
+    let endpoint = this.url + '/buscarproyecto?idProyecto=' + id;
     return this.http.get<Aplicacion>(endpoint, this.httpOptions);
   }
 }

@@ -9,53 +9,48 @@ import { Aplicacion } from '../../models/aplicacion';
   styleUrls: ['./aplicacion.component.css'],
 })
 export class AplicacionComponent implements OnInit {
-  aplicacion: Aplicacion;
+  aplicacion: any;
   idProyecto: number = 0;
+  arrayImagenes: any[] = [];
 
   constructor(
     private rutaActiva: ActivatedRoute,
     private _aplicacionesService: AplicacionesService
   ) {
     this.aplicacion = this.rutaActiva.snapshot.params['app'];
-    //trae los parametros
-    /*this.activatedRoute.params.subscribe(
-      (params) =>
-        (this.idProyecto = _aplicacionesService.getAplicacion(
-          params['app.idProyecto']
-        ))
-    );*/
   }
 
   ngOnInit(): void {
+    //traigo el id pasado por parametro en el routerlink
     this.idProyecto = this.rutaActiva.snapshot.params['app'];
 
     this.rutaActiva.params.subscribe((params: Params) => {
       this.idProyecto = params['app'];
     });
-    console.log(this.aplicacion);
+
+    //traigo el proyecto cuya id se paso por parametro
+    this.traerProyecto(this.idProyecto);
   }
 
   //trae el proyecto pasando el id por parametro
   public traerProyecto(idProyecto: number) {
-    console.log('entra al metodo traer proyecto');
     this._aplicacionesService
       .getAplicacion(idProyecto)
       .subscribe((respuesta) => {
         this.aplicacion = respuesta;
+        //this.arrayImagenes = respuesta.imagenes;
+        respuesta.imagenes.forEach((x) => {
+          this.arrayImagenes.push(x);
+          console.log(x);
+        });
+
         console.log(this.aplicacion);
-        console.log(this.aplicacion);
+        console.log(this.aplicacion.imagenes);
       });
   }
 
-  /*
-public traerAplicaciones() {
-    this._aplicacionesService.getAplicaciones().subscribe((respuesta) => {
-      respuesta.forEach((x) => {
-        this.aplicaciones.push(x);
-        console.log(x);
-      });
-      return respuesta;
-    });
+  //para obtener los temas y las tecnolgias
+  public obtenerValorPorPosicion(obj: any, posicion: number): any {
+    return Object.keys(obj)[posicion];
   }
-  */
 }

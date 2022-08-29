@@ -14,15 +14,14 @@ export class AplicacionesComponent implements OnInit {
   constructor(private _aplicacionesService: AplicacionesService) {}
 
   ngOnInit(): void {
-    this.traerAplicaciones();
-    console.log(this.aplicaciones);
+    this.traerAplicaciones(); //trae todas las aplicaciones almacenadas
   }
 
+  //trae todas las aplicaciones almacenadas
   public traerAplicaciones() {
     this._aplicacionesService.getAplicaciones().subscribe((respuesta) => {
       respuesta.forEach((x) => {
         this.aplicaciones.push(x);
-        console.log(x);
       });
       return respuesta;
     });

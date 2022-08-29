@@ -6,5 +6,5 @@ export interface Aplicacion {
   imgPrev: string;
   url: string;
   linkRepo: string;
-  listaImagenes: string[];
+  imagenes: string[];
 }
