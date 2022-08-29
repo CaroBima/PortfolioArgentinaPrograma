@@ -1,4 +1,8 @@
+<a href="url"><img src="https://github.com/CaroBima/PortfolioArgentinaPrograma/blob/main/frontend/src/assets/img/logos/argprogosc.png" align="left" height="100"></a>
+
 # Portfolio - #YoProgramo - Argentina Programa
+
+<br>
 
 ## Tecnologías utilizadas:
 
