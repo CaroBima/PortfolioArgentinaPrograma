@@ -1,1 +1,41 @@
-<p>nuevocurso works!</p>
+<div class="p-5 mb-4 bg-light rounded-3 animated fadeIn">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold mb-5">Agregar nuevo curso</h1>
+
+
+        <form>
+            <div class="row">
+                <div class="col-sm-6 mb-4">
+                    <label for="tituloInput" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="tituloInput"
+                        placeholder="Ej: Programador Full Stack con Java">
+                </div>
+                <div class="col-sm-6 mb-4">
+                    <label for="nombreCursoInput" class="form-label">Nombre del curso:</label>
+                    <input type="text" class="form-control" id="nombreCursoInput"
+                        placeholder="Ej: #YoProgramo - Argentina Programa">
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="tecnologias" class="form-label mb-0">Tecnologías aprendidas:</label>
+                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Seleccionar">
+                    <datalist id="datalistOptions">
+                        <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
+                    </datalist>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit"
+                        class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                        (click)="limpiarSeleccion()">Limpiar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

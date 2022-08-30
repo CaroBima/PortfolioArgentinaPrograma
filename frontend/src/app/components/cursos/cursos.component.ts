@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NumberValueAccessor } from '@angular/forms';
-
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { CursosService } from 'src/app/services/cursos.service';
 
@@ -22,14 +20,12 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerCusros();
-    console.log(this.cursos);
   }
 
   public traerCusros() {
     this._cursosService.getCursos().subscribe((respuesta) => {
       respuesta.forEach((x) => {
         this.cursos.push(x);
-        console.log(x);
       });
       return respuesta;
     });

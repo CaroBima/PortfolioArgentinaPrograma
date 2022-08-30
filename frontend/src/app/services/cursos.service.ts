@@ -33,19 +33,4 @@ export class CursosService {
     let endpoint = this.url + '/borrarcurso?idCurso=' + idCurso;
     this.http.delete(endpoint, this.httpOptions);
   }
-
-  //permite buscar un curso de acuerdo a la tecnologia buscada en el searchbar
-  /*public buscadorCurso(tecnologia: string) {
-    let cursosArray: ICursoInterface[] = [];
-    tecnologia = tecnologia.toLowerCase();
-
-    for (let curso of this.cursos) {
-      let tecno = curso.tecnologias.toLowerCase();
-
-      if (tecno.includes(tecnologia)) {
-        cursosArray.push(curso);
-      }
-    }
-    return cursosArray;
-  }*/
 }
