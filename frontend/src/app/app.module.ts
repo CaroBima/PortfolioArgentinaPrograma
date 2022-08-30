@@ -15,6 +15,7 @@ import { AplicacionesComponent } from './components/aplicaciones/aplicaciones.co
 import { CursosComponent } from './components/cursos/cursos.component';
 import { AplicacionComponent } from './components/aplicacion/aplicacion.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NuevocursoComponent } from './components/nuevocurso/nuevocurso.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     AplicacionesComponent,
     CursosComponent,
     AplicacionComponent,
+    NuevocursoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
