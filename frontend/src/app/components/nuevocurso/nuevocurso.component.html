@@ -31,9 +31,13 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="tituloInput" class="form-label" [ngModel]="linkImg">Imagen:</label>
-                    <input type="text" class="form-control" id="tituloInput"
-                        placeholder="Cargar imagen ,cambiar!!!!!!!!!!!!!!!!!!">
+                    <label for="descripcionInput" class="form-label" [ngModel]="descripcion">Imagen del
+                        certificado:</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="cargarImagenInput"
+                            aria-describedby="cargarImagenInput" aria-label="Upload" [ngModel]="linkImg">
+                        <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput">Cargar</button>
+                    </div>
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label for="cantidadHorasInput" class="form-label" [ngModel]="duracionCurso">Duración del curso (en
