@@ -9,17 +9,31 @@ import { ITecnologia } from '../../models/Tecnologia';
 })
 export class NuevocursoComponent implements OnInit {
   public tecnologiasArray: ITecnologia[] = [];
+  public tituloCurso: String;
+  public nombreCurso: String;
+  public institucion: string;
+  public descripcion: string;
+  public linkImg: string;
+  public duracionCurso: string;
+  public linkCurso: string;
+  public listaTemas: string[];
+  public listaTecnologias: string[];
 
-  constructor(private _tecnologiasService: TecnologiasService) {}
+  constructor(private _tecnologiasService: TecnologiasService) {
+    this.tituloCurso = '';
+    this.nombreCurso = '';
+    this.institucion = '';
+    this.descripcion = '';
+    this.linkImg = '';
+    this.duracionCurso = '';
+    this.linkCurso = '';
+    this.listaTemas = [];
+    this.listaTecnologias = [];
+  }
 
   ngOnInit(): void {
     this.traerTecnologias();
     console.log(this.tecnologiasArray);
-  }
-
-  //borra el valor del option de tecnologias
-  public limpiarSeleccion() {
-    console.log('don barredora soy');
   }
 
   public traerTecnologias() {
@@ -29,5 +43,10 @@ export class NuevocursoComponent implements OnInit {
       });
       return respuesta;
     });
+  }
+
+  public limpiarTecnologiasArray() {
+    this.tecnologiasArray.length = 0;
+    this.traerTecnologias();
   }
 }
