@@ -49,4 +49,11 @@ export class NuevocursoComponent implements OnInit {
     this.tecnologiasArray.length = 0;
     this.traerTecnologias();
   }
+
+  public limpiarTemas() {}
+
+  //para obtener los temas y las tecnolgias
+  public obtenerValorPorPosicion(obj: any, posicion: number): any {
+    return Object.keys(obj)[posicion];
+  }
 }

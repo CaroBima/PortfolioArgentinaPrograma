@@ -40,10 +40,10 @@
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="cantidadHorasInput" class="form-label" [ngModel]="duracionCurso">Duración del curso (en
-                        hs):</label>
+                    <label for="cantidadHorasInput" class="form-label" [ngModel]="duracionCurso">Duración del
+                        curso:</label>
                     <input type="number" class="form-control" id="cantidadHorasInput"
-                        placeholder="Ej: Descripción, detalles, comentarios sobre el curso">
+                        placeholder="Duración del curso expresada en horas">
                 </div>
             </div>
             <div class="row">
@@ -67,6 +67,65 @@
                         (onclick)="limpiarTecnologiasArray()">Limpiar</button>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    <label for="temasDataList" class="form-label mb-0">Temas aprendidos en el curso:</label>
+                    <input class="form-control" list="datalistOptions" id="temasDataList" placeholder="Seleccionar">
+                    <datalist id="datalistOptions">
+                        <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
+                    </datalist>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit"
+                        class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
+                        Tecnología</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                        (onclick)="limpiarTemas()">Limpiar</button>
+                </div>
+            </div>
         </form>
+
+        <!--
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+             Cards de proyectos
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{linkImg}}" class="card-img-top" alt="{{nombreCurso}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{tituloCurso}}</h5>
+                        <p class="card-text">
+                        <p *ngIf="(nombreCurso!='')"><strong>{{nombreCurso}}</strong> </p>
+                        <p class="mb-0"><strong>Tecnologías:</strong></p>
+                        <p>
+                            <ng-container *ngFor="let c of listaTecnologias; index as i">
+                                -{{c[obtenerValorPorPosicion(c, 1)]}}
+                            </ng-container>
+                        </p>
+                        <p class="mb-0"><strong>Temario:</strong></p>
+                        <p>
+                            <ng-container *ngFor="let t of listaTemas; index as i">
+                                -{{t[obtenerValorPorPosicion(t, 1)]}}
+                            </ng-container>
+                        </p>
+                        <p *ngIf="(descripcion!='')"><strong>Descripción:</strong> {{descripcion}}</p>
+                        <p *ngIf="(institucion!='')"><strong>Institución:</strong> {{institucion}}</p>
+                        <p *ngIf="(duracionCurso!='')"><strong>Duración:</strong> {{duracionCurso}}</p>
+                    </div>
+                    <div class="card-footer" *ngIf="(linkCurso!='')">
+                        <div class="d-grid gap-2 col-8 mx-auto">
+                            <a class="btn btn-outline-primary" href="{{linkCurso}}" role="button" target="_blank">Sitio
+                                web del curso</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>-->
     </div>
 </div>
