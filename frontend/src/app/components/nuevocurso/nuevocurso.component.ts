@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Curso } from 'src/app/models/Curso';
+import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { TecnologiasService } from 'src/app/services/tecnologias.service';
 import { ITecnologia } from '../../models/Tecnologia';
 
@@ -9,7 +11,8 @@ import { ITecnologia } from '../../models/Tecnologia';
 })
 export class NuevocursoComponent implements OnInit {
   public tecnologiasArray: ITecnologia[] = [];
-  public tituloCurso: String;
+  public curso: Curso;
+  /*  public tituloCurso: String;
   public nombreCurso: String;
   public institucion: string;
   public descripcion: string;
@@ -17,10 +20,11 @@ export class NuevocursoComponent implements OnInit {
   public duracionCurso: string;
   public linkCurso: string;
   public listaTemas: string[];
-  public listaTecnologias: string[];
+  public listaTecnologias: string[];*/
 
   constructor(private _tecnologiasService: TecnologiasService) {
-    this.tituloCurso = '';
+    this.curso = new Curso();
+    /*this.tituloCurso = '';
     this.nombreCurso = '';
     this.institucion = '';
     this.descripcion = '';
@@ -28,7 +32,7 @@ export class NuevocursoComponent implements OnInit {
     this.duracionCurso = '';
     this.linkCurso = '';
     this.listaTemas = [];
-    this.listaTecnologias = [];
+    this.listaTecnologias = [];*/
   }
 
   ngOnInit(): void {

@@ -6,24 +6,29 @@
         <form>
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="tituloInput" class="form-label" [ngModel]="tituloCurso">Título:</label>
+                    <label for="tituloInput" class="form-label" [ngModel]="curso.tituloCurso" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Título:</label>
                     <input type="text" class="form-control" id="tituloInput"
                         placeholder="Ej: Programador Full Stack con Java">
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="nombreCursoInput" class="form-label" [ngModel]="nombreCurso">Nombre del curso:</label>
+                    <label for="nombreCursoInput" class="form-label" [ngModel]="curso.nombreCurso" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Nombre del
+                        curso:</label>
                     <input type="text" class="form-control" id="nombreCursoInput"
                         placeholder="Ej: #YoProgramo - Argentina Programa">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="tituloInput" class="form-label" [ngModel]="institucion">Institución:</label>
+                    <label for="tituloInput" class="form-label" [ngModel]="curso.institucion" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Institución:</label>
                     <input type="text" class="form-control" id="institucionInput"
                         placeholder="Institución o entidad que brinda el curso">
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="descripcionInput" class="form-label" [ngModel]="descripcion">Descripción:</label>
+                    <label for="descripcionInput" class="form-label" [ngModel]="curso.descripcion" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Descripción:</label>
                     <input type="text" class="form-control" id="descripcionInput"
                         placeholder="Ej: Descripción, detalles, comentarios sobre el curso">
                 </div>
@@ -31,16 +36,19 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="descripcionInput" class="form-label" [ngModel]="descripcion">Imagen del
+                    <label for="descripcionInput" class="form-label" [ngModel]="curso.descripcion" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Imagen del
                         certificado:</label>
                     <div class="input-group">
                         <input type="file" class="form-control" id="cargarImagenInput"
-                            aria-describedby="cargarImagenInput" aria-label="Upload" [ngModel]="linkImg">
+                            aria-describedby="cargarImagenInput" aria-label="Upload" [ngModel]="curso.linkImg"
+                            ngDefaultControl [ngModelOptions]="{standalone: true}">
                         <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput">Cargar</button>
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="cantidadHorasInput" class="form-label" [ngModel]="duracionCurso">Duración del
+                    <label for="cantidadHorasInput" class="form-label" [ngModel]="curso.duracionCurso" ngDefaultControl
+                        [ngModelOptions]="{standalone: true}">Duración del
                         curso:</label>
                     <input type="number" class="form-control" id="cantidadHorasInput"
                         placeholder="Duración del curso expresada en horas">
@@ -80,7 +88,7 @@
                         class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
                 </div>
                 <div class="col-sm-2">
-                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
+                    <button type="button" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
                         Tecnología</button>
                 </div>
                 <div class="col-sm-2">
