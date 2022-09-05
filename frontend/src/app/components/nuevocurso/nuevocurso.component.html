@@ -57,45 +57,47 @@
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="tecnologias" class="form-label mb-0">Tecnologías aprendidas:</label>
-                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Seleccionar">
+                    <select name="temasSelect" class="form-select" id="floatingSelect" placeholder="Seleccionar">
+                        <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
+                            {{tecno.nombreTecnologia}}</option>
+                    </select>
+                    <!-- <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Seleccionar">
                     <datalist id="datalistOptions">
                         <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
-                    </datalist>
+                    </datalist>-->
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button type="submit"
                         class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
                         Tecnología</button>
                 </div>
-                <div class="col-sm-2">
+                <!--<div class="col-sm-2">
                     <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
                         (onclick)="limpiarTecnologiasArray()">Limpiar</button>
-                </div>
+                </div>-->
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="temasDataList" class="form-label mb-0">Temas aprendidos en el curso:</label>
-                    <input class="form-control" list="datalistOptions" id="temasDataList" placeholder="Seleccionar">
-                    <datalist id="datalistOptions">
-                        <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
-                    </datalist>
+
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button type="submit"
                         class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button type="button" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
                         Tecnología</button>
                 </div>
-                <div class="col-sm-2">
+                <!--<div class="col-sm-2">
                     <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
                         (onclick)="limpiarTemas()">Limpiar</button>
-                </div>
+                </div>-->
             </div>
+
         </form>
 
         <!--
