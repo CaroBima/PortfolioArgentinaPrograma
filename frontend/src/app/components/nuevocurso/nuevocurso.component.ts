@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/Curso';
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { TecnologiasService } from 'src/app/services/tecnologias.service';
-import { ITecnologia } from '../../models/Tecnologia';
+import { Tecnologia } from '../../models/Tecnologia';
+import { Tema } from '../../models/Tema';
 
 @Component({
   selector: 'app-nuevocurso',
@@ -10,29 +11,12 @@ import { ITecnologia } from '../../models/Tecnologia';
   styleUrls: ['./nuevocurso.component.css'],
 })
 export class NuevocursoComponent implements OnInit {
-  public tecnologiasArray: ITecnologia[] = [];
+  public tecnologiasArray: Tecnologia[] = [];
+  public temaArray: Tema[] = [];
   public curso: Curso;
-  /*  public tituloCurso: String;
-  public nombreCurso: String;
-  public institucion: string;
-  public descripcion: string;
-  public linkImg: string;
-  public duracionCurso: string;
-  public linkCurso: string;
-  public listaTemas: string[];
-  public listaTecnologias: string[];*/
 
   constructor(private _tecnologiasService: TecnologiasService) {
     this.curso = new Curso();
-    /*this.tituloCurso = '';
-    this.nombreCurso = '';
-    this.institucion = '';
-    this.descripcion = '';
-    this.linkImg = '';
-    this.duracionCurso = '';
-    this.linkCurso = '';
-    this.listaTemas = [];
-    this.listaTecnologias = [];*/
   }
 
   ngOnInit(): void {
@@ -59,5 +43,12 @@ export class NuevocursoComponent implements OnInit {
   //para obtener los temas y las tecnolgias
   public obtenerValorPorPosicion(obj: any, posicion: number): any {
     return Object.keys(obj)[posicion];
+  }
+
+  agregarTema(tema: string) {
+    let agregarTema = new Tema();
+    agregarTema.tema = tema;
+    this.temaArray.push(agregarTema);
+    console.log(this.temaArray);
   }
 }
