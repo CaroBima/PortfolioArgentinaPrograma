@@ -28,7 +28,7 @@ public class Tema {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idTema;
     
-    @Column(unique=true)
+    //@Column(unique=true)
     private String tema;
     
 //    @JsonBackReference
