@@ -3,7 +3,7 @@
         <h1 class="display-5 fw-bold mb-5">Agregar nuevo curso</h1>
 
 
-        <form>
+        <div>
             <div class="row">
                 <div class="col-sm-6 mb-4">
                     <label for="tituloInput" class="form-label" [ngModel]="curso.tituloCurso" ngDefaultControl
@@ -39,7 +39,7 @@
                 <div class="col-sm-6 mb-4">
                     <label for="descripcionInput" class="form-label" [ngModel]="curso.descripcion" ngDefaultControl
                         [ngModelOptions]="{standalone: true}">Imagen del
-                        certificado o imagen de presentacion:</label>
+                        certificado o de presentacion:</label>
                     <div class="input-group">
                         <input type="file" class="form-control" id="cargarImagenInput"
                             aria-describedby="cargarImagenInput" aria-label="Upload" [ngModel]="curso.linkImg"
@@ -48,10 +48,10 @@
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="cantidadHorasInput" class="form-label" [ngModel]="curso.duracionCurso" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Duración del
+                    <label for="cantidadHorasInput" class="form-label" name="cantidadHorasInput">Duración del
                         curso:</label>
-                    <input type="number" class="form-control" id="cantidadHorasInput"
+                    <input type="number" class="form-control" id="cantidadHorasInput" name="cantidadHorasInput"
+                        [ngModel]="curso.duracionCurso" ngDefaultControl
                         placeholder="Duración del curso expresada en horas">
                 </div>
             </div>
@@ -60,12 +60,12 @@
             <div class="row">
                 <div class="col-sm-9 mb-3">
                     <label for="temasInput" class="form-label mb-0">Temas aprendidos en el curso:</label>
-                    <input type="text" class="form-control" id="temasInput"
-                        placeholder="Ingresar tema visto. Ej: Programación Orientada a Objetos.">
+                    <input type="text" class="form-control" id="temasInput" name="temasInput" [(ngModel)]="temasIn"
+                        placeholder="Ej: Programación Orientada a Objetos." #temasInput>
                 </div>
                 <div class="col-sm-3">
-                    <button type="submit"
-                        class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                        (click)="agregarTema(temasInput.value)">Añadir</button>
                 </div>
             </div>
 
@@ -79,8 +79,8 @@
                     </select>
                 </div>
                 <div class="col-sm-3">
-                    <button type="submit"
-                        class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir</button>
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Añadir al
+                        curso</button>
                 </div>
                 <div class="col-sm-3">
                     <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Nueva
@@ -89,9 +89,9 @@
             </div>
 
 
-        </form>
+        </div>
 
-        <!--
+        <!-- 
         <div class="row row-cols-1 row-cols-md-3 g-4">
              Cards de proyectos
             <div class="col">

@@ -1,4 +1,6 @@
-export interface ITecnologia {
-  idTecnologia: number;
-  nombreTecnologia: string;
+export class Tecnologia {
+  idTecnologia?: number;
+  nombreTecnologia?: string;
+
+  constructor() {}
 }
