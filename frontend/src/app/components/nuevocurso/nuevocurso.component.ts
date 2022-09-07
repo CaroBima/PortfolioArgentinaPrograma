@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/Curso';
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { TecnologiasService } from 'src/app/services/tecnologias.service';
@@ -15,8 +15,11 @@ export class NuevocursoComponent implements OnInit {
   public temaArray: Tema[] = [];
   public curso: Curso;
 
+  public temasIn: any;
+
   constructor(private _tecnologiasService: TecnologiasService) {
     this.curso = new Curso();
+    this.temasIn = '';
   }
 
   ngOnInit(): void {
@@ -48,7 +51,9 @@ export class NuevocursoComponent implements OnInit {
   agregarTema(tema: string) {
     let agregarTema = new Tema();
     agregarTema.tema = tema;
+
     this.temaArray.push(agregarTema);
+    this.temasIn = '';
     console.log(this.temaArray);
   }
 }
