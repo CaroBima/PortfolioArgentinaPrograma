@@ -11,8 +11,9 @@ import { Tema } from '../../models/Tema';
   styleUrls: ['./nuevocurso.component.css'],
 })
 export class NuevocursoComponent implements OnInit {
-  public tecnologiasArray: Tecnologia[] = [];
-  public temaArray: Tema[] = [];
+  public tecnologiasBDArray: Tecnologia[] = []; //para traer las tecnologias almacenadas en la bbdd
+  public tecnologiasNvoCurso: Tecnologia[] = []; //para guardar y mostras las tecnologias que se carguen en el nvo curso
+  public temaArrayNvoCurso: Tema[] = []; //para guardar los temas agregados en el nuevo curso
   public curso: Curso;
 
   public temasIn: any;
@@ -24,36 +25,43 @@ export class NuevocursoComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerTecnologias();
-    console.log(this.tecnologiasArray);
+    console.log(this.tecnologiasBDArray);
   }
 
   public traerTecnologias() {
     this._tecnologiasService.getTecnologias().subscribe((respuesta) => {
       respuesta.forEach((resp) => {
-        this.tecnologiasArray.push(resp);
+        this.tecnologiasBDArray.push(resp);
       });
       return respuesta;
     });
   }
 
   public limpiarTecnologiasArray() {
-    this.tecnologiasArray.length = 0;
+    this.tecnologiasBDArray.length = 0;
     this.traerTecnologias();
   }
-
-  public limpiarTemas() {}
 
   //para obtener los temas y las tecnolgias
   public obtenerValorPorPosicion(obj: any, posicion: number): any {
     return Object.keys(obj)[posicion];
   }
 
+  //permite agregar un tema al array para el nvo curso
   agregarTema(tema: string) {
     let agregarTema = new Tema();
     agregarTema.tema = tema;
-
-    this.temaArray.push(agregarTema);
+    this.temaArrayNvoCurso.push(agregarTema);
     this.temasIn = '';
-    console.log(this.temaArray);
   }
+
+  /* metodo para mostrar la previsualizacion del curos
+public previsualizarCurso() {
+      if (tecno.includes(tecnologia)) {
+        cursosArray.push(curso);
+      }
+    }
+    return cursosArray;
+  }
+} */
 }
