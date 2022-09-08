@@ -59,8 +59,22 @@ export class NuevocursoComponent implements OnInit {
   //falta validar que no se ingrese dos veces la misma tecnologia
   agregarTecnologia(tecnologia: string) {
     let agregarTecno = new Tecnologia();
+    let banderaTecno: boolean = false;
     agregarTecno.nombreTecnologia = tecnologia;
-    this.tecnologiasNvoCurso.push(agregarTecno);
+
+    //si hay algo en el array lo recorro para ver si ya se ingreso previamente la tecno, para que no se pueda guardar dos veces la misma
+    if (this.tecnologiasNvoCurso.length > 0) {
+      for (let tecno of this.tecnologiasNvoCurso) {
+        if (tecno.nombreTecnologia === agregarTecno.nombreTecnologia) {
+          banderaTecno = true; //si la tecnología ya está en el array guardo true
+        }
+      }
+    }
+
+    //si la tecnologia no esta en el array la agrego
+    if (banderaTecno === false) {
+      this.tecnologiasNvoCurso.push(agregarTecno);
+    }
   }
 
   /* metodo para mostrar la previsualizacion del curos
