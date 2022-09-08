@@ -55,6 +55,14 @@ export class NuevocursoComponent implements OnInit {
     this.temasIn = '';
   }
 
+  //permite agregar una tecnologia al array de tecnologias que sera guardado
+  //falta validar que no se ingrese dos veces la misma tecnologia
+  agregarTecnologia(tecnologia: string) {
+    let agregarTecno = new Tecnologia();
+    agregarTecno.nombreTecnologia = tecnologia;
+    this.tecnologiasNvoCurso.push(agregarTecno);
+  }
+
   /* metodo para mostrar la previsualizacion del curos
 public previsualizarCurso() {
       if (tecno.includes(tecnologia)) {
