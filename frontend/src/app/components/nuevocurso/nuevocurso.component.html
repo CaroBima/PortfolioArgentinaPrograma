@@ -74,7 +74,7 @@
                 <div class="col-sm-6 mb-3">
                     <label for="tecnologias" class="form-label mb-0">Tecnologías aprendidas:</label>
                     <select name="temasSelect" class="form-select" id="floatingSelect" placeholder="Seleccionar">
-                        <option *ngFor="let tecno of tecnologiasArray" value="{{tecno.nombreTecnologia}}">
+                        <option *ngFor="let tecno of tecnologiasBDArray" value="{{tecno.nombreTecnologia}}">
                             {{tecno.nombreTecnologia}}</option>
                     </select>
                 </div>
@@ -97,7 +97,7 @@
 
         </div>
 
-        <!-- Vusta previa del curso-->
+        <!-- Vista previa del curso-->
         <h1 class="display-5 fw-bold mt-5 mb-4">Vista previa del curso:</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -110,13 +110,13 @@
                         <p *ngIf="(curso.nombreCurso!='')"><strong>{{curso.nombreCurso}}</strong> </p>
                         <p class="mb-0"><strong>Tecnologías:</strong></p>
                         <p>
-                            <ng-container *ngFor="let tec of tecnologiasArray; index as i">
+                            <ng-container *ngFor="let tec of tecnologiasNvoCurso; index as i">
                                 -{{tec.nombreTecnologia}}
                             </ng-container>
                         </p>
                         <p class="mb-0"><strong>Temario:</strong></p>
                         <p>
-                            <ng-container *ngFor="let tema of temaArray; index as i">
+                            <ng-container *ngFor="let tema of temaArrayNvoCurso; index as i">
                                 -{{tema.tema}}
                             </ng-container>
                         </p>
