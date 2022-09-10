@@ -6,62 +6,63 @@
         <form autocomplete="off">
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="tituloInput" class="form-label" [ngModel]="curso.tituloCurso" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Título:</label>
+                    <label for="tituloInput" class="form-label">Título:</label>
                     <input type="text" class="form-control" id="tituloInput"
-                        placeholder="Ej: Programador Full Stack con Java">
+                        placeholder="Ej: Programador Full Stack con Java" [(ngModel)]="curso.tituloCurso"
+                        ngDefaultControl [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="nombreCursoInput" class="form-label" [ngModel]="curso.nombreCurso" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Nombre del
+                    <label for="nombreCursoInput" class="form-label">Nombre del
                         curso:</label>
                     <input type="text" class="form-control" id="nombreCursoInput"
-                        placeholder="Ej: #YoProgramo - Argentina Programa">
+                        placeholder="Ej: #YoProgramo - Argentina Programa" [(ngModel)]="curso.nombreCurso"
+                        ngDefaultControl [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="tituloInput" class="form-label" [ngModel]="curso.institucion" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Institución:</label>
+                    <label for="tituloInput" class="form-label">Institución:</label>
                     <input type="text" class="form-control" id="institucionInput"
-                        placeholder="Institución o entidad que brinda el curso">
+                        placeholder="Institución o entidad que brinda el curso" [(ngModel)]="curso.institucion"
+                        ngDefaultControl [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <label for="descripcionInput" class="form-label" [ngModel]="curso.descripcion" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Descripción:</label>
+                    <label for="descripcionInput" class="form-label">Descripción:</label>
                     <input type="text" class="form-control" id="descripcionInput"
-                        placeholder="Ej: Descripción, detalles, comentarios sobre el curso">
+                        placeholder="Ej: Descripción, detalles, comentarios sobre el curso"
+                        [(ngModel)]="curso.descripcion" ngDefaultControl [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
 
             <!-- Certificado y duración del curso -->
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <label for="descripcionInput" class="form-label" [ngModel]="curso.descripcion" ngDefaultControl
-                        [ngModelOptions]="{standalone: true}">Imagen del
+                    <label for="descripcionInput" class="form-label">Imagen del
                         certificado o de presentacion:</label>
                     <div class="input-group">
                         <input type="file" class="form-control" id="cargarImagenInput"
-                            aria-describedby="cargarImagenInput" aria-label="Upload" [ngModel]="curso.linkImg"
-                            ngDefaultControl [ngModelOptions]="{standalone: true}">
-                        <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput">Cargar</button>
+                            aria-describedby="cargarImagenInput" aria-label="Upload" [(ngModel)]="curso.linkImg"
+                            ngDefaultControl [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
+                        <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
+                            (onClick)="onUpload()">Cargar</button>
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label for="cantidadHorasInput" class="form-label" name="cantidadHorasInput">Duración del
                         curso:</label>
                     <input type="number" class="form-control" id="cantidadHorasInput" name="cantidadHorasInput"
-                        [ngModel]="curso.duracionCurso" ngDefaultControl
+                        [(ngModel)]="curso.duracionCurso" ngDefaultControl
                         placeholder="Duración del curso expresada en horas">
                 </div>
             </div>
+
 
             <!-- Temas -->
             <div class="row">
                 <div class="col-sm-9 mb-3">
                     <label for="temasInput" class="form-label mb-0">Temas aprendidos en el curso:</label>
                     <input type="text" class="form-control" id="temasInput" name="temasInput" [(ngModel)]="temasIn"
-                        placeholder="Ej: Programación Orientada a Objetos." #temasInput>
+                        placeholder="Ej: Programación Orientada a Objetos (2 o más caracteres)." #temasInput>
                 </div>
                 <div class="col-sm-3">
                     <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
@@ -105,7 +106,8 @@
 
             <div class="col-sm-6 mb-3 mx-auto">
                 <div class="card h-100">
-                    <img src="{{curso.linkImg}}" class="card-img-top" alt="{{curso.nombreCurso}}">
+                    <img *ngIf="(curso.linkImg!='')" src="{{curso.linkImg}}" class="card-img-top"
+                        alt="{{curso.nombreCurso}}">
                     <div class="card-body">
                         <h5 class="card-title">{{curso.tituloCurso}}</h5>
                         <p class="card-text">

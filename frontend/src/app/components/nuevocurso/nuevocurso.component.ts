@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/Curso';
 import { ICursoInterface } from 'src/app/models/CursoInterface';
+import { SubirArchivosService } from 'src/app/services/subirArchivos.service';
 import { TecnologiasService } from 'src/app/services/tecnologias.service';
 import { Tecnologia } from '../../models/Tecnologia';
 import { Tema } from '../../models/Tema';
@@ -15,10 +17,17 @@ export class NuevocursoComponent implements OnInit {
   public tecnologiasNvoCurso: Tecnologia[] = []; //para guardar y mostras las tecnologias que se carguen en el nvo curso
   public temaArrayNvoCurso: Tema[] = []; //para guardar los temas agregados en el nuevo curso
   public curso: Curso;
+  public shortLink: string = '';
+  public loading: boolean = false; // Flag variable
+  public file!: File; // Variable to store file
 
   public temasIn: any;
 
-  constructor(private _tecnologiasService: TecnologiasService) {
+  constructor(
+    private _tecnologiasService: TecnologiasService,
+    private http: HttpClient,
+    private subirArchivosService: SubirArchivosService
+  ) {
     this.curso = new Curso();
     this.temasIn = '';
   }
@@ -51,19 +60,18 @@ export class NuevocursoComponent implements OnInit {
   agregarTema(tema: string) {
     let agregarTema = new Tema();
     agregarTema.tema = tema;
-    this.temaArrayNvoCurso.push(agregarTema);
+    if (agregarTema.tema.length >= 2) this.temaArrayNvoCurso.push(agregarTema); //valido que se ingresen al menos dos caracteres
     this.temasIn = '';
   }
 
   //permite agregar una tecnologia al array de tecnologias que sera guardado
-  //falta validar que no se ingrese dos veces la misma tecnologia
   agregarTecnologia(tecnologia: string) {
     let agregarTecno = new Tecnologia();
     let banderaTecno: boolean = false;
     agregarTecno.nombreTecnologia = tecnologia;
 
-    //si hay algo en el array lo recorro para ver si ya se ingreso previamente la tecno, para que no se pueda guardar dos veces la misma
     if (this.tecnologiasNvoCurso.length > 0) {
+      //si hay algo en el array lo recorro para ver si ya se ingreso previamente la tecno, para que no se pueda guardar dos veces la misma
       for (let tecno of this.tecnologiasNvoCurso) {
         if (tecno.nombreTecnologia === agregarTecno.nombreTecnologia) {
           banderaTecno = true; //si la tecnología ya está en el array guardo true
@@ -71,19 +79,39 @@ export class NuevocursoComponent implements OnInit {
       }
     }
 
-    //si la tecnologia no esta en el array la agrego
     if (banderaTecno === false) {
+      //si la tecnologia no esta en el array la agrego
       this.tecnologiasNvoCurso.push(agregarTecno);
     }
   }
 
-  /* metodo para mostrar la previsualizacion del curos
-public previsualizarCurso() {
-      if (tecno.includes(tecnologia)) {
-        cursosArray.push(curso);
-      }
-    }
-    return cursosArray;
+  /*
+  //metodo para cargar la imagen del certificado
+  cargarImagen(file: File) {
+    this.http.post('../../../assets/', file).subscribe((event) => {
+      console.log('imagen cargada');
+    });
+  }*/
+
+  // On file Select
+  onChange(event: any) {
+    this.file = event.target.files[0];
+    console.log(this.file);
   }
-} */
+
+  // OnClick of button Upload
+  onUpload() {
+    console.log('OnUpload');
+    this.loading = !this.loading;
+    //console.log(this.file);
+    console.log('OnUpload');
+    this.subirArchivosService.subirImagen(this.file).subscribe((event: any) => {
+      if (typeof event === 'object') {
+        // Short link via api response
+        this.shortLink = event.link;
+
+        this.loading = false; // Flag variable
+      }
+    });
+  }
 }
