@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Curso } from 'src/app/models/Curso';
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { SubirArchivosService } from 'src/app/services/subirArchivos.service';
@@ -20,13 +21,14 @@ export class NuevocursoComponent implements OnInit {
   public shortLink: string = '';
   public loading: boolean = false; // Flag variable
   public file!: File; // Variable to store file
-
   public temasIn: any;
+  public previsualizacion: string = '';
 
   constructor(
     private _tecnologiasService: TecnologiasService,
     private http: HttpClient,
-    private subirArchivosService: SubirArchivosService
+    private subirArchivosService: SubirArchivosService,
+    private sanitizer: DomSanitizer
   ) {
     this.curso = new Curso();
     this.temasIn = '';
@@ -85,17 +87,13 @@ export class NuevocursoComponent implements OnInit {
     }
   }
 
-  /*
-  //metodo para cargar la imagen del certificado
-  cargarImagen(file: File) {
-    this.http.post('../../../assets/', file).subscribe((event) => {
-      console.log('imagen cargada');
-    });
-  }*/
-
   // On file Select
   onChange(event: any) {
     this.file = event.target.files[0];
+    this.extraerBase64(this.file).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen);
+    });
     console.log(this.file);
   }
 
@@ -114,4 +112,26 @@ export class NuevocursoComponent implements OnInit {
       }
     });
   }
+
+  extraerBase64 = async ($event: any) =>
+    new Promise((resolve, reject) => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          resolve({
+            base: null,
+          });
+        };
+      } catch (e) {
+        //return null;
+      }
+    });
 }

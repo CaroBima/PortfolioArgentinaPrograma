@@ -40,7 +40,7 @@
                     <label for="descripcionInput" class="form-label">Imagen del
                         certificado o de presentacion:</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="cargarImagenInput"
+                        <input type="file" accept="image/*" #imagenInput class="form-control" id="cargarImagenInput"
                             aria-describedby="cargarImagenInput" aria-label="Upload" [(ngModel)]="curso.linkImg"
                             ngDefaultControl [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
                         <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
@@ -106,7 +106,7 @@
 
             <div class="col-sm-6 mb-3 mx-auto">
                 <div class="card h-100">
-                    <img *ngIf="(curso.linkImg!='')" src="{{curso.linkImg}}" class="card-img-top"
+                    <img *ngIf="(previsualizacion!='')" [src]="previsualizacion" class="card-img-top"
                         alt="{{curso.nombreCurso}}">
                     <div class="card-body">
                         <h5 class="card-title">{{curso.tituloCurso}}</h5>
