@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Sanitizer } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +10,9 @@ export class SubirArchivosService {
   // API url
   baseApiUrl = 'http://localhost:4200/assets/img/certificados'; //directorio donde se va a cargar la imagen
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+    this.sanitizer = sanitizer;
+  }
 
   subirImagen(file: File): Observable<any> {
     //crea el formData
