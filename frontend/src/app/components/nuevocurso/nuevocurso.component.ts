@@ -99,18 +99,19 @@ export class NuevocursoComponent implements OnInit {
 
   // OnClick of button Upload
   onUpload() {
-    console.log('OnUpload');
-    this.loading = !this.loading;
+    //this.loading = !this.loading;
     //console.log(this.file);
     console.log('OnUpload');
-    this.subirArchivosService.subirImagen(this.file).subscribe((event: any) => {
+    this.subirArchivosService.subirImagen(
+      this.file
+    ); /*.subscribe((event: any) => {
       if (typeof event === 'object') {
         // Short link via api response
         this.shortLink = event.link;
 
         this.loading = false; // Flag variable
       }
-    });
+    });*/
   }
 
   extraerBase64 = async ($event: any) =>
