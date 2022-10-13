@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Sanitizer } from '@angular/core';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { DomSanitizer } from '@angular/platform-browser';
+import { getStorage, ref, uploadString } from 'firebase/storage';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,8 +11,13 @@ import { Observable } from 'rxjs';
 export class SubirArchivosService {
   // API url
   baseApiUrl = 'http://localhost:4200/assets/img/certificados'; //directorio donde se va a cargar la imagen
+  public previsualizacion: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private storage: AngularFirestoreModule,
+    private sanitizer: DomSanitizer
+  ) {}
 
   subirImagen(file: File): any {
     //crea el formData
@@ -25,5 +33,23 @@ export class SubirArchivosService {
     } catch (e) {
       //return null;
     }
+
+    /*
+    //firebase
+    //const filePath = file.name;
+    //const fileRef = this.storage.ref(filePath);
+    const storage = getStorage();
+    const imgRef = ref(storage, file.name);
+
+    // Data URL string
+    this.extraerBase64(file).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      return imagen.base;
+      console.log(imagen);
+    });
+
+    uploadString(imgRef, this.previsualizacion, 'data_url').then((snapshot) => {
+      console.log('Uploaded a data_url string!');
+    });*/
   }
 }

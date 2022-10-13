@@ -1,3 +1,6 @@
+import { Tecnologia } from './Tecnologia';
+import { Tema } from './Tema';
+
 export class Curso {
   tituloCurso?: String;
   nombreCurso?: String;
@@ -6,8 +9,8 @@ export class Curso {
   linkImg?: string;
   duracionCurso?: string;
   linkCurso?: string;
-  listaTemas?: string[];
-  listaTecnologias?: string[];
+  listaTemas?: Tema[];
+  listaTecnologias?: Tecnologia[];
 
   constructor() {}
 

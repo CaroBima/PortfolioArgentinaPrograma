@@ -16,6 +16,7 @@ public class CursoService implements ICursoService{
 
     @Override
     public void guardarCurso(Curso curso) {
+        System.out.println("llega al servicio");
         cursoRepo.save(curso);
     }
 
@@ -31,7 +32,7 @@ public class CursoService implements ICursoService{
     
     
     @Override
-    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevoLink, String nuevaDurac, List<Tecnologia> nvaListaTecnol) {
+    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, byte[] nuevaImagen, String nuevaDurac, List<Tecnologia> nvaListaTecnol) {
        Curso curso = this.buscarUnCurso(idCurso);
        
        if(nuevoTit!= null){
@@ -50,8 +51,8 @@ public class CursoService implements ICursoService{
            curso.setDescripcion(nuevaDesc);
        }
        
-       if(nuevoLink != null){
-           curso.setLinkImg(nuevoLink);
+       if(nuevaImagen != null){
+           curso.setImagen(nuevaImagen);
        }
        
        if(nuevaDurac != null){

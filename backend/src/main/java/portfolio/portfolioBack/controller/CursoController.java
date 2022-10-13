@@ -21,9 +21,9 @@ public class CursoController {
     ICursoService cursoService;
     
     
-    @PostMapping("/cursos/nuevocurso")
+    @PostMapping("/nuevocurso")
     public void guardarCurso(@RequestBody Curso curso){
-        
+        System.out.println("llega al back");
         cursoService.guardarCurso(curso);
     }
     

@@ -9,14 +9,14 @@
                     <label for="tituloInput" class="form-label">Título:</label>
                     <input type="text" class="form-control" id="tituloInput"
                         placeholder="Ej: Programador Full Stack con Java" [(ngModel)]="curso.tituloCurso"
-                        ngDefaultControl [ngModelOptions]="{standalone: true}">
+                        ngDefaultControl [ngModelOptions]="{standalone: true}" #titulo>
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label for="nombreCursoInput" class="form-label">Nombre del
                         curso:</label>
                     <input type="text" class="form-control" id="nombreCursoInput"
                         placeholder="Ej: #YoProgramo - Argentina Programa" [(ngModel)]="curso.nombreCurso"
-                        ngDefaultControl [ngModelOptions]="{standalone: true}">
+                        ngDefaultControl [ngModelOptions]="{standalone: true}" #nombreCurso>
                 </div>
             </div>
             <div class="row">
@@ -24,13 +24,14 @@
                     <label for="tituloInput" class="form-label">Institución:</label>
                     <input type="text" class="form-control" id="institucionInput"
                         placeholder="Institución o entidad que brinda el curso" [(ngModel)]="curso.institucion"
-                        ngDefaultControl [ngModelOptions]="{standalone: true}">
+                        ngDefaultControl [ngModelOptions]="{standalone: true}" #institucion>
                 </div>
                 <div class="col-sm-6 mb-4">
                     <label for="descripcionInput" class="form-label">Descripción:</label>
                     <input type="text" class="form-control" id="descripcionInput"
                         placeholder="Ej: Descripción, detalles, comentarios sobre el curso"
-                        [(ngModel)]="curso.descripcion" ngDefaultControl [ngModelOptions]="{standalone: true}">
+                        [(ngModel)]="curso.descripcion" ngDefaultControl [ngModelOptions]="{standalone: true}"
+                        #descripcion>
                 </div>
             </div>
 
@@ -43,8 +44,8 @@
                         <input type="file" accept="image/*" #imagenInput class="form-control" id="cargarImagenInput"
                             aria-describedby="cargarImagenInput" aria-label="Upload" [(ngModel)]="curso.linkImg"
                             ngDefaultControl [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
-                        <button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
-                            (click)="onUpload()">Cargar</button>
+                        <!--<button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
+                            (click)="onUpload()">Cargar</button>-->
                     </div>
                 </div>
                 <div class="col-sm-6 mb-4">
@@ -52,7 +53,7 @@
                         curso:</label>
                     <input type="number" class="form-control" id="cantidadHorasInput" name="cantidadHorasInput"
                         [(ngModel)]="curso.duracionCurso" ngDefaultControl
-                        placeholder="Duración del curso expresada en horas">
+                        placeholder="Duración del curso expresada en horas" #duracion>
                 </div>
             </div>
 
@@ -93,7 +94,8 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3 mx-auto">
-                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3">Guardar
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                        (click)="guardarNuevoCurso(titulo.value, nombreCurso.value, institucion.value, descripcion.value, duracion.value)">Guardar
                         curso</button>
                 </div>
             </div>
@@ -121,7 +123,7 @@
                         <p class="mb-0"><strong>Temario:</strong></p>
                         <p>
                             <ng-container *ngFor="let tema of temaArrayNvoCurso; index as i">
-                                -{{tema.tema}}
+                                -{{tema.nombreTema}}
                             </ng-container>
                         </p>
                         <p *ngIf="(curso.descripcion!='')"><strong>Descripción:</strong> {{curso.descripcion}}</p>

@@ -1,6 +1,5 @@
 export class Tema {
   idTema?: number;
-  tema?: string;
-
+  nombreTema?: string;
   constructor() {}
 }
