@@ -22,7 +22,7 @@ public class Tema {
     private Long idTema;
     
     //@Column(unique=true)
-    private String tema;
+    private String nombreTema;
     
 //    @JsonBackReference
 //    @ManyToMany(mappedBy = "listaTemas", fetch=FetchType.LAZY)

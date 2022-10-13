@@ -13,11 +13,20 @@ public class CursoService implements ICursoService{
     
     @Autowired
     private ICursoRepository cursoRepo;
+    
+    @Autowired
+    private ITemaService temaService;
+    
 
     @Override
     public void guardarCurso(Curso curso) {
-        System.out.println("llega al servicio");
-        cursoRepo.save(curso);
+        
+        //verifica si los temas ya estan guardados y si no lo estan los guarda
+        temaService.guardarTema(curso.getListaTemas());
+        
+        
+        //faltan validaciones antes de poder guardar
+        //cursoRepo.save(curso);
     }
 
     @Override
