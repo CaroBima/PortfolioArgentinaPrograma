@@ -18,6 +18,28 @@ public class TemaService implements ITemaService {
         temaRepo.save(tema);
     }
 
+    //permite guardar los temas nuevos que no se encuentren previamente en la bbdd recibiendo una lista de temas
+    @Override
+    public void guardarTema(List<Tema> listaTemas) {
+        List<Tema> listaTemasGuardada = this.traerTemas();
+        boolean yaGuardado = false;
+        
+        //comparo la lista de temas con la traida de la bbdd
+        for (Tema tema : listaTemas){
+            for(Tema temaBD : listaTemasGuardada){
+                if(temaBD.getNombreTema().toLowerCase().equals(tema.getNombreTema().toLowerCase())){
+                    yaGuardado = true;
+                }
+            }
+            if(!yaGuardado){
+                temaRepo.save(tema);
+            }else{
+                yaGuardado = false;
+            }
+        }
+    }
+    
+    
     @Override
     public List<Tema> traerTemas() {
         return temaRepo.findAll();
@@ -28,7 +50,7 @@ public class TemaService implements ITemaService {
     public Tema modificarTemas(Long idTema, String nvoTema) {
         Tema tema = temaRepo.findById(idTema).orElse(null);
         if(tema != null && nvoTema != null){ //si el tema existe y se paso un cambio en el nombre de la tematica entra
-            tema.setTema(nvoTema);
+            tema.setNombreTema(nvoTema);
             temaRepo.save(tema);
         }
         
@@ -44,5 +66,6 @@ public class TemaService implements ITemaService {
     public void eliminarTema(Long idTema) {
         temaRepo.deleteById(idTema);
     }
-    
+
+   
 }
