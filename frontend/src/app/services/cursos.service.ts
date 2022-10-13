@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ICursoInterface } from '../models/CursoInterface';
 import { Observable } from 'rxjs/internal/Observable';
+import { Curso } from '../models/Curso';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,12 @@ export class CursosService {
   public borrarCurso(idCurso: number) {
     let endpoint = this.url + '/borrarcurso?idCurso=' + idCurso;
     this.http.delete(endpoint, this.httpOptions);
+  }
+
+  public guardarCurso(nuevoCurso: Curso) {
+    console.log('entra a guardar curso');
+    let endpoint = this.url + '/nuevocurso';
+    console.log(endpoint);
+    this.http.post(endpoint, nuevoCurso, this.httpOptions).subscribe();
   }
 }

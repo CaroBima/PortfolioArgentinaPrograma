@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion } from '../models/aplicacion';
@@ -17,7 +18,8 @@ export class AplicacionesService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080';
+    //this.url = 'http://localhost:8080';
+    this.url = 'https://git.heroku.com/sheltered-peak-37372.git';
   }
 
   //devuelve todas las aplicaciones
