@@ -1,6 +1,7 @@
 package portfolio.portfolioBack.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Tema {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idTema;
     
-    //@Column(unique=true)
+    @Column(unique=true)
     private String nombreTema;
     
 //    @JsonBackReference
