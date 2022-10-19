@@ -48,7 +48,7 @@ public class Curso {
             inverseJoinColumns = {
             @JoinColumn(name = "idTema", nullable = false)})
     @ManyToMany 
-    (cascade = CascadeType.MERGE)
+    //(cascade = CascadeType.MERGE)
     private List<Tema> listaTemas; 
     
    
