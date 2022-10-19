@@ -35,11 +35,11 @@ export class NuevocursoComponent implements OnInit {
     this.curso = new Curso();
     this.temasIn = '';
     this.curso.listaTemas = [];
+    this.curso.listaTecnologias = [];
   }
 
   ngOnInit(): void {
     this.traerTecnologias();
-    console.log(this.tecnologiasBDArray);
   }
 
   public traerTecnologias() {
@@ -89,6 +89,7 @@ export class NuevocursoComponent implements OnInit {
       //si la tecnologia no esta en el array la agrego
       this.tecnologiasNvoCurso.push(agregarTecno);
     }
+    console.log(this.tecnologiasNvoCurso);
   }
 
   // Al seleccionar la imagen a cargar
@@ -122,11 +123,13 @@ export class NuevocursoComponent implements OnInit {
     }
 
     for (let tecnologia of this.tecnologiasNvoCurso) {
-      this.curso.listaTecnologias?.push(tecnologia);
+      console.log('dentro edl for');
+      console.log(tecnologia);
+      this.curso.listaTecnologias!.push(tecnologia);
     }
+
     console.log(this.curso);
     this.cursoService.guardarCurso(this.curso);
-    console.log('llega aca');
   }
 
   extraerBase64 = async ($event: any) =>

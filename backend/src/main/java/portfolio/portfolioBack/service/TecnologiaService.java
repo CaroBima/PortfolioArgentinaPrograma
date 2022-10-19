@@ -17,6 +17,39 @@ public class TecnologiaService implements ITecnologiaService{
     public void guardarTecnologia(Tecnologia tecnologia) {
         tecnoRepo.save(tecnologia);
     }
+    
+     @Override
+    public List<Tecnologia> guardarTecnologia(List<Tecnologia> listaTecnologias) {
+         List<Tecnologia> listaTecnolGuardada = this.traerTecnologias();
+        boolean yaGuardado = false;
+        
+        //comparo la lista de temas con la traida de la bbdd
+        for (Tecnologia tecnologia : listaTecnologias){
+            for(Tecnologia tecnologiaBD : listaTecnolGuardada){
+                if(tecnologiaBD.getNombreTecnologia().toLowerCase().equals(tecnologia.getNombreTecnologia().toLowerCase())){
+                    yaGuardado = true;
+                    
+                }
+            }
+            if(!yaGuardado){
+                tecnoRepo.save(tecnologia);
+            }else{
+                yaGuardado = false;
+            }
+        }
+        
+        //guardo en el array los id de las tecnologias
+         for (Tecnologia tecnologia : listaTecnologias){
+            for(Tecnologia tecnologiaBD : listaTecnolGuardada){
+                if(tecnologiaBD.getNombreTecnologia().toLowerCase().equals(tecnologia.getNombreTecnologia().toLowerCase())){
+                    tecnologia.setIdTecnologia(tecnologiaBD.getIdTecnologia());
+                    
+                }
+            }
+        }
+  
+        return listaTecnologias;
+    }
 
     @Override
     public List<Tecnologia> traerTecnologias() {
@@ -44,5 +77,7 @@ public class TecnologiaService implements ITecnologiaService{
     public void eliminarTecnologia(Long idTecnologia) {
         tecnoRepo.deleteById(idTecnologia);
     }
+
+   
     
 }

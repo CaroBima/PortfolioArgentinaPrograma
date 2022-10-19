@@ -17,6 +17,9 @@ public class CursoService implements ICursoService{
     @Autowired
     private ITemaService temaService;
     
+    @Autowired 
+    private ITecnologiaService tecnologiaService; 
+    
 
     @Override
     public void guardarCurso(Curso curso) {
@@ -24,9 +27,10 @@ public class CursoService implements ICursoService{
         //verifica si los temas ya estan guardados y si no lo estan los guarda
         temaService.guardarTema(curso.getListaTemas());
         
+        curso.setListaTecnologias(tecnologiaService.guardarTecnologia(curso.getListaTecnologias()));
+      
         
-        //faltan validaciones antes de poder guardar
-        //cursoRepo.save(curso);
+        cursoRepo.save(curso);
     }
 
     @Override
