@@ -9,4 +9,5 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AppComponent {
   title = 'Portfolio';
   constructor(firestore: AngularFirestore) {}
+  //constructor() {}
 }

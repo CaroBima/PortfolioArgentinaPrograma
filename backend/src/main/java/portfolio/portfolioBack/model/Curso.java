@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,8 +38,8 @@ public class Curso {
     private String descripcion;
     
     @Lob
-    @Column(name = "imagen", columnDefinition="BLOB")
-    private byte[] imagen;
+    @Column(name = "imagen", columnDefinition="LONGBLOB")
+    private String imagen;
     
     private String duracionCurso;
     private String linkCurso;
@@ -47,8 +48,7 @@ public class Curso {
             @JoinColumn(name = "idCurso", nullable = false)},
             inverseJoinColumns = {
             @JoinColumn(name = "idTema", nullable = false)})
-    @ManyToMany 
-    //(cascade = CascadeType.MERGE)
+    @ManyToMany  //(cascade = CascadeType.ALL)
     private List<Tema> listaTemas; 
     
    

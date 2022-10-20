@@ -6,9 +6,9 @@ export class Curso {
   nombreCurso?: String;
   institucion?: string;
   descripcion?: string;
-  linkImg?: string;
+  //linkImg?: string;
   duracionCurso?: string;
-  linkCurso?: string;
+  imagen?: string;
   listaTemas?: Tema[];
   listaTecnologias?: Tecnologia[];
 

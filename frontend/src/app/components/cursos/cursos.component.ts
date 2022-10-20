@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ICursoInterface } from 'src/app/models/CursoInterface';
 import { CursosService } from 'src/app/services/cursos.service';
 
@@ -13,7 +14,11 @@ export class CursosComponent implements OnInit {
   buscador: any;
   banderaBusqueda: boolean;
   tecnologia: string;
-  constructor(private _cursosService: CursosService) {
+  public imagenCurso: string = '';
+  constructor(
+    private _cursosService: CursosService,
+    private sanitizer: DomSanitizer
+  ) {
     this.banderaBusqueda = false;
     this.tecnologia = '';
   }
@@ -25,6 +30,9 @@ export class CursosComponent implements OnInit {
   public traerCusros() {
     this._cursosService.getCursos().subscribe((respuesta) => {
       respuesta.forEach((x) => {
+        this.extraerBase64(x.imagen).then((img: any) => {
+          x.imagen = img.base;
+        });
         this.cursos.push(x);
       });
       return respuesta;
@@ -41,7 +49,6 @@ export class CursosComponent implements OnInit {
       for (let tecno of curso.listaTecnologias) {
         let nombreTecno = tecno[this.obtenerValorPorPosicion(tecno, 1)];
         nombreTecno = nombreTecno.toLowerCase();
-        console.log(nombreTecno);
         if (nombreTecno.includes(tecnologia.toLowerCase())) {
           this.cursos.push(curso);
         }
@@ -64,4 +71,26 @@ export class CursosComponent implements OnInit {
   public obtenerValorPorPosicion(obj: any, posicion: number): any {
     return Object.keys(obj)[posicion];
   }
+
+  extraerBase64 = async ($event: any) =>
+    new Promise((resolve, reject) => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          resolve({
+            base: null,
+          });
+        };
+      } catch (e) {
+        //return null;
+      }
+    });
 }

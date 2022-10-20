@@ -4,7 +4,7 @@ export interface ICursoInterface {
   nombreCurso: string;
   institucion: string;
   descripcion: string;
-  linkImg: string;
+  imagen: string;
   duracionCurso: string;
   linkCurso: string;
   listaTemas: string[];
