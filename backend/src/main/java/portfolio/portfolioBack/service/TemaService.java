@@ -1,5 +1,6 @@
 package portfolio.portfolioBack.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,23 +21,32 @@ public class TemaService implements ITemaService {
 
     //permite guardar los temas nuevos que no se encuentren previamente en la bbdd recibiendo una lista de temas
     @Override
-    public void guardarTema(List<Tema> listaTemas) {
+    public List<Tema> guardarTema(List<Tema> listaTemas) {
         List<Tema> listaTemasGuardada = this.traerTemas();
         boolean yaGuardado = false;
         
-        //comparo la lista de temas con la traida de la bbdd
         for (Tema tema : listaTemas){
             for(Tema temaBD : listaTemasGuardada){
-                if(temaBD.getNombreTema().toLowerCase().equals(tema.getNombreTema().toLowerCase())){
+                if(tema.getNombreTema().equalsIgnoreCase(temaBD.getNombreTema()) && tema.getIdTema()==null){    
+                    tema.setIdTema(temaBD.getIdTema());
                     yaGuardado = true;
-                }
+                    
+                } 
+                
             }
-            if(!yaGuardado){
-                temaRepo.save(tema);
-            }else{
-                yaGuardado = false;
+            if (yaGuardado == false && tema.getIdTema()==null){
+                tema = (temaRepo.save(tema));
             }
+            yaGuardado = false;
         }
+      /*
+        for (Tema tema : listaTemas){
+            System.out.println("id: " + tema.getIdTema());
+            System.out.println("id: " + tema.getNombreTema());
+        }
+      */
+      
+      return listaTemas;
     }
     
     

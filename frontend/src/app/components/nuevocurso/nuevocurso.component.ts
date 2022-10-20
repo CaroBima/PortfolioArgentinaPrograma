@@ -117,14 +117,13 @@ export class NuevocursoComponent implements OnInit {
     this.curso.institucion = institucion;
     this.curso.descripcion = descripcion;
     this.curso.duracionCurso = duracion;
+    this.curso.imagen = this.previsualizacion;
 
     for (let tema of this.temaArrayNvoCurso) {
       this.curso.listaTemas!.push(tema);
     }
 
     for (let tecnologia of this.tecnologiasNvoCurso) {
-      console.log('dentro edl for');
-      console.log(tecnologia);
       this.curso.listaTecnologias!.push(tecnologia);
     }
 

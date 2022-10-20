@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import portfolio.portfolioBack.model.Curso;
 import portfolio.portfolioBack.model.Tecnologia;
+import portfolio.portfolioBack.model.Tema;
 import portfolio.portfolioBack.repository.ICursoRepository;
 
 
@@ -23,12 +24,10 @@ public class CursoService implements ICursoService{
 
     @Override
     public void guardarCurso(Curso curso) {
-        
         //verifica si los temas ya estan guardados y si no lo estan los guarda
-        temaService.guardarTema(curso.getListaTemas());
+        curso.setListaTemas(temaService.guardarTema(curso.getListaTemas()));
         
         curso.setListaTecnologias(tecnologiaService.guardarTecnologia(curso.getListaTecnologias()));
-      
         
         cursoRepo.save(curso);
     }
@@ -45,7 +44,7 @@ public class CursoService implements ICursoService{
     
     
     @Override
-    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, byte[] nuevaImagen, String nuevaDurac, List<Tecnologia> nvaListaTecnol) {
+    public Curso modificarCurso(Long idCurso, String nuevoTit, String nuevoNomb, String nuevaInstit, String nuevaDesc, String nuevaImagen, String nuevaDurac, List<Tecnologia> nvaListaTecnol) {
        Curso curso = this.buscarUnCurso(idCurso);
        
        if(nuevoTit!= null){

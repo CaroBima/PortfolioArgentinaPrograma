@@ -39,7 +39,7 @@
         <!-- Cards de proyectos -->
         <div class="col" *ngFor="let curso of cursos;">
             <div class="card h-100">
-                <img src="{{curso.linkImg}}" class="card-img-top" alt="{{curso.nombreCurso}}">
+                <img [src]="curso.imagen" class="card-img-top" alt="{{curso.nombreCurso}}">
                 <div class="card-body">
                     <h5 class="card-title">{{curso.tituloCurso}}</h5>
                     <p class="card-text">
