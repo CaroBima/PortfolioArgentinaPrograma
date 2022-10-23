@@ -73,6 +73,19 @@
 
             <!-- Tecnologías -->
             <div class="row">
+                <div class="col-sm-9 mb-3">
+                    <label for="tecnologiasInput" class="form-label mb-0">Tecnologías aprendidas:</label>
+                    <input type="text" class="form-control" id="tecnologiasInput" name="tecnologiasInput"
+                        [(ngModel)]="tecnologiasIn"
+                        placeholder="Ej: Programación Orientada a Objetos (2 o más caracteres)." #tecnoInput>
+                </div>
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                        (click)="agregarTecnologia(tecnoInput.value)">Añadir</button>
+                </div>
+            </div>
+            <!--
+            <div class="row">
                 <div class="col-sm-6 mb-3">
                     <label for="tecnologias" class="form-label mb-0">Tecnologías aprendidas:</label>
                     <select name="temasSelect" class="form-select" id="floatingSelect" placeholder="Seleccionar"
@@ -91,6 +104,8 @@
                         Tecnología</button>
                 </div>
             </div>
+            -->
+            <!-- Boton guardar nuevo curso-->
 
             <div class="row">
                 <div class="col-sm-6 mb-3 mx-auto">

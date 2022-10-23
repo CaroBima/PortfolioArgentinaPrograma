@@ -23,6 +23,7 @@ export class NuevocursoComponent implements OnInit {
   public loading: boolean = false; // Flag variable
   public file!: File; // Variable to store file
   public temasIn: any;
+  public tecnologiasIn: any;
   public previsualizacion: string = '';
 
   constructor(
@@ -39,21 +40,7 @@ export class NuevocursoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.traerTecnologias();
-  }
-
-  public traerTecnologias() {
-    this._tecnologiasService.getTecnologias().subscribe((respuesta) => {
-      respuesta.forEach((resp) => {
-        this.tecnologiasBDArray.push(resp);
-      });
-      return respuesta;
-    });
-  }
-
-  public limpiarTecnologiasArray() {
-    this.tecnologiasBDArray.length = 0;
-    this.traerTecnologias();
+    //this.traerTecnologias();
   }
 
   //para obtener los temas y las tecnolgias
@@ -70,26 +57,13 @@ export class NuevocursoComponent implements OnInit {
     this.temasIn = '';
   }
 
-  //permite agregar una tecnologia al array de tecnologias que sera guardado
-  agregarTecnologia(tecnologia: string) {
+  //Permite agredar una tecnologia al array de tecnologias
+  agregarTecnologia(tecno: string) {
     let agregarTecno = new Tecnologia();
-    let banderaTecno: boolean = false;
-    agregarTecno.nombreTecnologia = tecnologia;
-
-    if (this.tecnologiasNvoCurso.length > 0) {
-      //si hay algo en el array lo recorro para ver si ya se ingreso previamente la tecno, para que no se pueda guardar dos veces la misma
-      for (let tecno of this.tecnologiasNvoCurso) {
-        if (tecno.nombreTecnologia === agregarTecno.nombreTecnologia) {
-          banderaTecno = true; //si la tecnología ya está en el array guardo true
-        }
-      }
-    }
-
-    if (banderaTecno === false) {
-      //si la tecnologia no esta en el array la agrego
+    agregarTecno.nombreTecnologia = tecno;
+    if (agregarTecno.nombreTecnologia.length >= 2)
       this.tecnologiasNvoCurso.push(agregarTecno);
-    }
-    console.log(this.tecnologiasNvoCurso);
+    this.tecnologiasIn = '';
   }
 
   // Al seleccionar la imagen a cargar
@@ -126,9 +100,17 @@ export class NuevocursoComponent implements OnInit {
     for (let tecnologia of this.tecnologiasNvoCurso) {
       this.curso.listaTecnologias!.push(tecnologia);
     }
-
-    console.log(this.curso);
     this.cursoService.guardarCurso(this.curso);
+    this.curso.tituloCurso = '';
+    this.curso.nombreCurso = '';
+    this.curso.institucion = '';
+    this.curso.descripcion = '';
+    this.curso.duracionCurso = '';
+    this.curso.imagen = '';
+    this.temasIn = '';
+    this.tecnologiasIn = '';
+    this.curso.listaTecnologias = [];
+    this.curso.listaTemas = [];
   }
 
   extraerBase64 = async ($event: any) =>
@@ -152,4 +134,40 @@ export class NuevocursoComponent implements OnInit {
         //return null;
       }
     });
+
+  /* //METODOS DE TECNOLOGIA CON EL SELECT
+    public traerTecnologias() {
+      this._tecnologiasService.getTecnologias().subscribe((respuesta) => {
+        respuesta.forEach((resp) => {
+          this.tecnologiasBDArray.push(resp);
+        });
+        return respuesta;
+      });
+    }
+  
+    public limpiarTecnologiasArray() {
+      this.tecnologiasBDArray.length = 0;
+      this.traerTecnologias();
+    }
+    //permite agregar una tecnologia al array de tecnologias que sera guardado
+    agregarTecnologia(tecnologia: string) {
+      let agregarTecno = new Tecnologia();
+      let banderaTecno: boolean = false;
+      agregarTecno.nombreTecnologia = tecnologia;
+  
+      if (this.tecnologiasNvoCurso.length > 0) {
+        //si hay algo en el array lo recorro para ver si ya se ingreso previamente la tecno, para que no se pueda guardar dos veces la misma
+        for (let tecno of this.tecnologiasNvoCurso) {
+          if (tecno.nombreTecnologia === agregarTecno.nombreTecnologia) {
+            banderaTecno = true; //si la tecnología ya está en el array guardo true
+          }
+        }
+      }
+  
+      if (banderaTecno === false) {
+        //si la tecnologia no esta en el array la agrego
+        this.tecnologiasNvoCurso.push(agregarTecno);
+      }
+      console.log(this.tecnologiasNvoCurso);
+    }*/
 }
