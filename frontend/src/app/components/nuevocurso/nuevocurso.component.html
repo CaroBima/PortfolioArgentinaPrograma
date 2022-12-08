@@ -1,8 +1,12 @@
-<div class="p-5 mb-4 bg-light rounded-3 animated fadeIn">
-    <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold mb-5">Agregar nuevo curso</h1>
-
+<div class="p-5 mb-3 bg-light rounded-3 animated fadeIn">
+    <div class="container-fluid ">
         <div class="row">
+            <div class="col-12">
+                <p class="display-5 fw-bold mb-5">Agregar nuevo curso</p>
+            </div>
+        </div>
+
+        <div class="row container-fluid">
             <div class="col-6">
                 <form autocomplete="off">
                     <div class="row">
@@ -122,10 +126,10 @@
             </div>
             <div class="col-6">
                 <!-- Vista previa del curso-->
-                <h1 class="display-5 fw-bold mt-5 mb-4">Vista previa del curso:</h1>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                    <div class="col-sm-6 mb-3 mx-auto">
+                <div class="row row-cols-1 row-cols-md-7 g-4 ms-3">
+
+                    <div class="col-sm-12 mb-3 mx-auto">
                         <div class="card h-100">
                             <img *ngIf="(previsualizacion!='')" [src]="previsualizacion" class="card-img-top"
                                 alt="{{curso.nombreCurso}}">
