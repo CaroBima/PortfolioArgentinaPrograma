@@ -101,6 +101,8 @@ export class NuevocursoComponent implements OnInit {
       this.curso.listaTecnologias!.push(tecnologia);
     }
     this.cursoService.guardarCurso(this.curso);
+
+    //limpio los campos
     this.curso.tituloCurso = '';
     this.curso.nombreCurso = '';
     this.curso.institucion = '';
@@ -113,6 +115,7 @@ export class NuevocursoComponent implements OnInit {
     this.curso.listaTemas = [];
     this.tecnologiasNvoCurso = [];
     this.temaArrayNvoCurso = [];
+    this.previsualizacion = '';
   }
 
   extraerBase64 = async ($event: any) =>
