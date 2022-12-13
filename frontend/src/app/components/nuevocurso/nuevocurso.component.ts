@@ -111,6 +111,8 @@ export class NuevocursoComponent implements OnInit {
     this.tecnologiasIn = '';
     this.curso.listaTecnologias = [];
     this.curso.listaTemas = [];
+    this.tecnologiasNvoCurso = [];
+    this.temaArrayNvoCurso = [];
   }
 
   extraerBase64 = async ($event: any) =>
