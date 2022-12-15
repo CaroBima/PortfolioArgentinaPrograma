@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MiStackComponent } from './components/miStack/miStack.component';
 import { InicioSesionComponent } from './components/inicioSesion/inicioSesion.component';
 import { NuevocursoComponent } from './components/nuevocurso/nuevocurso.component';
+import { NuevoProyectoComponent } from './components/nuevo-proyecto/nuevo-proyecto.component';
 
 const ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const ROUTES: Routes = [
   { path: 'mistack', component: MiStackComponent },
   { path: 'inicioSesion', component: InicioSesionComponent },
   { path: 'nuevoCurso', component: NuevocursoComponent },
+  { path: 'nuevoProyecto', component: NuevoProyectoComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
