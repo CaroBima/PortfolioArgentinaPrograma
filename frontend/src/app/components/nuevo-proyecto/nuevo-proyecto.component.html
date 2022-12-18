@@ -1,7 +1,28 @@
 <div class=" container-fluid  p-5 mb-3 bg-light rounded-3 animated fadeIn">
     <div class="row">
         <div class="col-12">
-            <p class="display-5 fw-bold mb-5">Agregar nuevo proyecto realizado</p>
+            <p class="display-5 fw-bold mb-5">Nuevo proyecto:</p>
+
+            <div class="row ">
+                <div class="col-md-6">
+                    <!--comienzo de formulario -->
+                    <form autocomplete="off">
+                        <div class="row">
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripcionInput" class="form-label">Imagen de portada</label>
+                                <div class="input-group">
+                                    <input type="file" accept="image/*" #imagenInput class="form-control"
+                                        id="cargarImagenInput" aria-describedby="cargarImagenInput" aria-label="Upload"
+                                        [(ngModel)]="proyecto.imgPrincipal" ngDefaultControl
+                                        [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
+                                    <!--<button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
+                                    (click)="onUpload()">Cargar</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

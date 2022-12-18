@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Proyecto } from 'src/app/models/Proyecto';
 import { SubirArchivosService } from 'src/app/services/subirArchivos.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { SubirArchivosService } from 'src/app/services/subirArchivos.service';
 export class NuevoProyectoComponent implements OnInit {
   public previsualizacion: string = '';
   public file!: File; // Variable to store file
+  public proyecto!: Proyecto;
 
   constructor(
     private sanitizer: DomSanitizer,
