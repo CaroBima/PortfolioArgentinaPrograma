@@ -8,6 +8,27 @@
                     <!--comienzo de formulario -->
                     <form autocomplete="off">
                         <div class="row">
+                            <!--Nombre del proyecto -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="nombreCursoInput" class="form-label">Nombre del proyecto:</label>
+                                <input type="text" class="form-control" id="nombreCursoInput"
+                                    [(ngModel)]="proyecto.nombre" ngDefaultControl [ngModelOptions]="{standalone: true}"
+                                    #nombreCurso>
+                            </div>
+                            <!--Descripcion corta -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripcionInput" class="form-label">Descripción detallada:</label>
+                                <input type="" class="form-control" id="descripcionInput"
+                                    [(ngModel)]="proyecto.descripcion" ngDefaultControl
+                                    [ngModelOptions]="{standalone: true}" #descripcion>
+                            </div>
+                            <!--Descripcion amplia -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripcionInput" class="form-label">Descripción corta:</label>
+                                <textarea name="descCorta" class="form-control" id="descripcionInput" cols="30"
+                                    rows="10" [(ngModel)]="proyecto.descripcion" ngDefaultControl
+                                    [ngModelOptions]="{standalone: true}" #descripcion>></textarea>
+                            </div>
                             <!--Imagen de presentación -->
                             <div class="col-sm-6 mb-4">
                                 <label for="descripcionInput" class="form-label">Imagen de presentación: </label>
@@ -16,8 +37,6 @@
                                         id="cargarImagenInput" aria-describedby="cargarImagenInput" aria-label="Upload"
                                         [(ngModel)]="proyecto.imgPrincipal" ngDefaultControl
                                         [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
-                                    <!--<button class="btn btn-outline-secondary" type="button" id="cargarImagenInput"
-                                    (click)="onUpload()">Cargar</button>-->
                                 </div>
                             </div>
                         </div>
