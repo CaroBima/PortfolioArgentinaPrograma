@@ -29,6 +29,14 @@ export class NuevoProyectoComponent implements OnInit {
     });
   }
 
+  //para cargar el vector de imagenes
+  onChangeVector(event: any) {
+    this.file = event.target.files[0];
+    this.extraerBase64(this.file).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+    });
+  }
+
   onUpload() {
     this.subirArchivosService.subirImagen(this.file);
   }
