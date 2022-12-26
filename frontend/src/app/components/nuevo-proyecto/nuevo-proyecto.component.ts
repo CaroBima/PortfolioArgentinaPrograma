@@ -9,8 +9,9 @@ import { SubirArchivosService } from 'src/app/services/subirArchivos.service';
   styleUrls: ['./nuevo-proyecto.component.css'],
 })
 export class NuevoProyectoComponent implements OnInit {
-  public previsualizacion: string = '';
-  public file!: File; // Variable to store file
+  public previsualizacion: string = ''; //para previsualizar la imagen principal del proyecto
+  public vectorPrevisualizacion!: string[]; //para la previsualización de las imagenes del proyecto
+  public file!: File; // Variable para el archivo de imagen
   public proyecto!: Proyecto;
 
   constructor(
@@ -33,7 +34,7 @@ export class NuevoProyectoComponent implements OnInit {
   onChangeVector(event: any) {
     this.file = event.target.files[0];
     this.extraerBase64(this.file).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
+      this.vectorPrevisualizacion.push = imagen.base; //agrega la imagen al vector de imagenes
     });
   }
 
