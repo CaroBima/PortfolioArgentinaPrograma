@@ -35,8 +35,8 @@ import { NuevoProyectoComponent } from './components/nuevo-proyecto/nuevo-proyec
     NuevoProyectoComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
