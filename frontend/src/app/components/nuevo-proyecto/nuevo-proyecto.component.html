@@ -1,0 +1,75 @@
+<div class=" container-fluid  p-5 mb-3 bg-light rounded-3 animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <p class="display-5 fw-bold mb-5">Nuevo proyecto:</p>
+
+            <div class="row ">
+                <div class="col-md-6">
+                    <!--comienzo de formulario -->
+                    <form autocomplete="off">
+                        <div class="row">
+                            <!--Nombre del proyecto -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="nombreCursoInput" class="form-label">Nombre del proyecto:</label>
+                                <input type="text" class="form-control" id="nombreCursoInput"
+                                    [(ngModel)]="proyecto.nombre" ngDefaultControl [ngModelOptions]="{standalone: true}"
+                                    #nombreCurso>
+                            </div>
+                            <!--Descripcion corta -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripCortaInput" class="form-label">Descripción corta:</label>
+                                <input type="" class="form-control" id="descripCortaInput"
+                                    [(ngModel)]="proyecto.descrCorta" ngDefaultControl
+                                    [ngModelOptions]="{standalone: true}" #descripcionCorta>
+                            </div>
+
+                            <!--Link del repo -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="linkRepoInput" class="form-label">Link del repo:</label>
+                                <input type="" class="form-control" id="linkRepoInput" [(ngModel)]="proyecto.linkRepo"
+                                    ngDefaultControl [ngModelOptions]="{standalone: true}" #linkRepo>
+                            </div>
+
+                            <!--Url de la app (donde está corriendo) -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="urlDeployInput" class="form-label">Url de deploy:</label>
+                                <input type="" class="form-control" id="urlDeployInput"
+                                    [(ngModel)]="proyecto.descrAmplia" ngDefaultControl
+                                    [ngModelOptions]="{standalone: true}" #urlDeploy>
+                            </div>
+
+                            <!--Descripcion amplia -->
+                            <div class="col-sm-12 mb-4">
+                                <label for="descripcionInput" class="form-label">Descripción detallada:</label>
+                                <textarea name="descCorta" class="form-control" id="descripcionInput" cols="30" rows="5"
+                                    [(ngModel)]="proyecto.descrAmplia" ngDefaultControl
+                                    [ngModelOptions]="{standalone: true}" #descripcion>></textarea>
+                            </div>
+                            <!--Imagen de presentación -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripcionInput" class="form-label">Imagen de presentación: </label>
+                                <div class="input-group">
+                                    <input type="file" accept="image/*" #imagenInput class="form-control"
+                                        id="cargarImagenInput" aria-describedby="cargarImagenInput" aria-label="Upload"
+                                        [(ngModel)]="proyecto.imgPrincipal" ngDefaultControl
+                                        [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
+                                </div>
+                            </div>
+                            <!--Imagenes de presentación -->
+                            <div class="col-sm-6 mb-4">
+                                <label for="descripcionInput" class="form-label">Otras imagenes: </label>
+                                <div class="input-group">
+                                    <input type="file" accept="image/*" #imagenInput class="form-control"
+                                        id="otrasImgInput" aria-describedby="otrasImgInput" aria-label="Upload"
+                                        [(ngModel)]="proyecto.imgPrincipal" ngDefaultControl
+                                        [ngModelOptions]="{standalone: true}" (change)="onChangeVector($event)">
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

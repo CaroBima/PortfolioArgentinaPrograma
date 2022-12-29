@@ -66,18 +66,6 @@ export class NuevocursoComponent implements OnInit {
     this.tecnologiasIn = '';
   }
 
-  // Al seleccionar la imagen a cargar
-  onChange(event: any) {
-    this.file = event.target.files[0];
-    this.extraerBase64(this.file).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-    });
-  }
-
-  onUpload() {
-    this.subirArchivosService.subirImagen(this.file);
-  }
-
   //método para el guardado del curso
   guardarNuevoCurso(
     titulo: string,
@@ -101,6 +89,8 @@ export class NuevocursoComponent implements OnInit {
       this.curso.listaTecnologias!.push(tecnologia);
     }
     this.cursoService.guardarCurso(this.curso);
+
+    //limpio los campos
     this.curso.tituloCurso = '';
     this.curso.nombreCurso = '';
     this.curso.institucion = '';
@@ -111,6 +101,23 @@ export class NuevocursoComponent implements OnInit {
     this.tecnologiasIn = '';
     this.curso.listaTecnologias = [];
     this.curso.listaTemas = [];
+    this.tecnologiasNvoCurso = [];
+    this.temaArrayNvoCurso = [];
+    this.previsualizacion = '';
+  }
+
+  //------------------------------------------ Cargado de img ----------------------------------------------------
+
+  // Al seleccionar la imagen a cargar
+  onChange(event: any) {
+    this.file = event.target.files[0];
+    this.extraerBase64(this.file).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+    });
+  }
+
+  onUpload() {
+    this.subirArchivosService.subirImagen(this.file);
   }
 
   extraerBase64 = async ($event: any) =>

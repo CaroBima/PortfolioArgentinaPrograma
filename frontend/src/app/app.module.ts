@@ -19,6 +19,7 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { AplicacionComponent } from './components/aplicacion/aplicacion.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NuevocursoComponent } from './components/nuevocurso/nuevocurso.component';
+import { NuevoProyectoComponent } from './components/nuevo-proyecto/nuevo-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,11 @@ import { NuevocursoComponent } from './components/nuevocurso/nuevocurso.componen
     CursosComponent,
     AplicacionComponent,
     NuevocursoComponent,
+    NuevoProyectoComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
