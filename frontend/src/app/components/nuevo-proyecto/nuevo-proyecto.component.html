@@ -13,7 +13,7 @@
                                 <label for="nombreCursoInput" class="form-label">Nombre del proyecto:</label>
                                 <input type="text" class="form-control" id="nombreCursoInput"
                                     [(ngModel)]="proyecto.nombre" ngDefaultControl [ngModelOptions]="{standalone: true}"
-                                    #nombreCurso>
+                                    #nombreProyecto>
                             </div>
                             <!--Descripcion corta -->
                             <div class="col-sm-6 mb-4">
@@ -33,9 +33,8 @@
                             <!--Url de la app (donde está corriendo) -->
                             <div class="col-sm-6 mb-4">
                                 <label for="urlDeployInput" class="form-label">Url de deploy:</label>
-                                <input type="" class="form-control" id="urlDeployInput"
-                                    [(ngModel)]="proyecto.descrAmplia" ngDefaultControl
-                                    [ngModelOptions]="{standalone: true}" #urlDeploy>
+                                <input type="" class="form-control" id="urlDeployInput" [(ngModel)]="proyecto.urlDeploy"
+                                    ngDefaultControl [ngModelOptions]="{standalone: true}" #urlDeploy>
                             </div>
 
                             <!--Descripcion amplia -->
@@ -43,7 +42,7 @@
                                 <label for="descripcionInput" class="form-label">Descripción detallada:</label>
                                 <textarea name="descCorta" class="form-control" id="descripcionInput" cols="30" rows="5"
                                     [(ngModel)]="proyecto.descrAmplia" ngDefaultControl
-                                    [ngModelOptions]="{standalone: true}" #descripcion>></textarea>
+                                    [ngModelOptions]="{standalone: true}" #descrAmplia>></textarea>
                             </div>
                             <!--Imagen de presentación -->
                             <div class="col-sm-6 mb-4">
@@ -66,6 +65,15 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <!-- Boton guardar nuevo curso-->
+
+                        <div class="row">
+                            <div class="col-sm-6 mb-3 mx-auto">
+                                <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                                    (click)="guardarProyecto(nombreProyecto.value, descripcionCorta.value, linkRepo.value, urlDeploy.value, descrAmplia.value )">Guardar
+                                    curso</button>
+                            </div>
                         </div>
                     </form>
                 </div>
