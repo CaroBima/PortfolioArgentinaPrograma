@@ -17,9 +17,29 @@ export class NuevoProyectoComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private subirArchivosService: SubirArchivosService
-  ) {}
+  ) {
+    this.proyecto = new Proyecto();
+  }
 
   ngOnInit(): void {}
+
+  guardarProyecto(
+    nombreProyecto: string,
+    descripcionCorta: string,
+    linkRepo: string,
+    urlDeploy: string,
+    descrAmplia: string
+  ) {
+    this.proyecto.nombre = nombreProyecto;
+    this.proyecto.descrCorta = descripcionCorta;
+    this.proyecto.linkRepo = linkRepo;
+    this.proyecto.urlDeploy = urlDeploy;
+    this.proyecto.descrAmplia = descrAmplia;
+    this.proyecto.imgPrincipal = this.previsualizacion;
+    this.proyecto.imagenes = this.vectorPrevisualizacion;
+
+    console.log(this.proyecto);
+  }
 
   //------------------------------------------ Cargado de img ----------------------------------------------------
   // Al seleccionar la imagen a cargar
