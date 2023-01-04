@@ -36,7 +36,7 @@ export class NuevoProyectoComponent implements OnInit {
     this.proyecto.urlDeploy = urlDeploy;
     this.proyecto.descrAmplia = descrAmplia;
     this.proyecto.imgPrincipal = this.previsualizacion;
-    this.proyecto.imagenes = this.vectorPrevisualizacion;
+    //this.proyecto.imagenes = this.vectorPrevisualizacion;
 
     console.log(this.proyecto);
   }
@@ -46,7 +46,8 @@ export class NuevoProyectoComponent implements OnInit {
   onChange(event: any) {
     this.file = event.target.files[0];
     this.extraerBase64(this.file).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
+      //this.previsualizacion = imagen.base;
+      this.proyecto.imagenes?.push(imagen.base);
     });
   }
 
@@ -55,6 +56,7 @@ export class NuevoProyectoComponent implements OnInit {
     this.file = event.target.files[0];
     this.extraerBase64(this.file).then((imagen: any) => {
       this.vectorPrevisualizacion.push = imagen.base; //agrega la imagen al vector de imagenes
+      console.log(this.vectorPrevisualizacion);
     });
   }
 
