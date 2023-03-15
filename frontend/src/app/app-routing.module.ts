@@ -18,8 +18,8 @@ const ROUTES: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'mistack', component: MiStackComponent },
   { path: 'inicioSesion', component: InicioSesionComponent },
-  { path: 'nuevoCurso', component: NuevocursoComponent },
-  { path: 'nuevoProyecto', component: NuevoProyectoComponent },
+  { path: 'nuevocurso', component: NuevocursoComponent },
+  { path: 'nuevoproyecto', component: NuevoProyectoComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

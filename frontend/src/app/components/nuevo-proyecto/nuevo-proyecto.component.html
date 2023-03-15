@@ -45,7 +45,7 @@
                                     [ngModelOptions]="{standalone: true}" #descrAmplia>></textarea>
                             </div>
                             <!--Imagen de presentación -->
-                            <div class="col-sm-6 mb-4">
+                            <div class="col-sm-12 mb-4">
                                 <label for="descripcionInput" class="form-label">Imagen de presentación: </label>
                                 <div class="input-group">
                                     <input type="file" accept="image/*" #imagenInput class="form-control"
@@ -54,20 +54,32 @@
                                         [ngModelOptions]="{standalone: true}" (change)="onChange($event)">
                                 </div>
                             </div>
-                            <!--Imagenes de presentación -->
-                            <div class="col-sm-6 mb-4">
-                                <label for="descripcionInput" class="form-label">Otras imagenes: </label>
-                                <div class="input-group">
-                                    <input type="file" accept="image/*" #imagenInput class="form-control"
-                                        id="otrasImgInput" aria-describedby="otrasImgInput" aria-label="Upload"
-                                        [(ngModel)]="proyecto.imgPrincipal" ngDefaultControl
-                                        [ngModelOptions]="{standalone: true}" (change)="onChangeVector($event)">
+                            <!--Otras imágenes del proyecto-->
+                            <div class="row">
+                                <!-- input de la imagen -->
+                                <div class="col-sm-9 ">
+                                    <label for="descripcionInput" class="form-label">Otras imagenes: </label>
+                                    <div class="input-group">
+                                        <input type="file" accept="image/*" #imagenInput class="form-control"
+                                            id="otrasImgInput" aria-describedby="otrasImgInput" aria-label="Upload"
+                                            [(ngModel)]="proyecto.imagenes" ngDefaultControl
+                                            [ngModelOptions]="{standalone: true}" (change)="onChangeVector($event)">
+                                    </div>
+                                </div>
+                                <!-- boton para añadir la imagen -->
+                                <div class="col-sm-3">
+                                    <button type="submit"
+                                        class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
+                                        (click)="agregarImagen()">Añadir</button>
                                 </div>
                             </div>
 
                         </div>
-                        <!-- Boton guardar nuevo curso-->
 
+
+
+
+                        <!-- Boton guardar nuevo curso-->
                         <div class="row">
                             <div class="col-sm-6 mb-3 mx-auto">
                                 <button type="submit" class="btn btn-outline-primary col-12 mt-4 me-0 ms-0 ps-3 pe-3"
