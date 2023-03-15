@@ -41,7 +41,9 @@ export class NuevoProyectoComponent implements OnInit {
     console.log(this.proyecto);
   }
 
-  //------------------------------------------ Cargado de img ----------------------------------------------------
+  agregarImagen() {}
+
+  //------------------------------------------ Carga de img ----------------------------------------------------
   // Al seleccionar la imagen a cargar
   onChange(event: any) {
     this.file = event.target.files[0];
