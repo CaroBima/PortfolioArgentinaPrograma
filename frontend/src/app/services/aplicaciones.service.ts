@@ -4,9 +4,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion } from '../models/aplicacion';
 
+import { API_URL } from '../configuracion';
+
+
+const urlConst = `${API_URL}`;
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class AplicacionesService {
   private url;
   httpOptions = {
@@ -18,7 +24,7 @@ export class AplicacionesService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080';
+    this.url = urlConst;
     //this.url = 'https://git.heroku.com/sheltered-peak-37372.git';
   }
 

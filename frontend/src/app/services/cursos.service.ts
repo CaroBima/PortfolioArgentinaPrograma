@@ -4,13 +4,23 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ICursoInterface } from '../models/CursoInterface';
 import { Observable } from 'rxjs/internal/Observable';
 import { Curso } from '../models/Curso';
+import { API_URL } from '../configuracion';
+
+
+const urlConst = `${API_URL}`;
+
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class CursosService {
+
   private cursos: ICursoInterface[] = [];
   private url;
+
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,7 +30,7 @@ export class CursosService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8081';
+    this.url = urlConst;
   }
 
   //devuelve todos los cursos almacenados en la bbdd

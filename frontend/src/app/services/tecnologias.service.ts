@@ -3,6 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Tecnologia } from '../models/Tecnologia';
 
+
+import { API_URL } from '../configuracion';
+
+
+const urlConst = `${API_URL}`;
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +22,7 @@ export class TecnologiasService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080';
+    this.url = urlConst;
   }
 
   //devuelve todos los cursos almacenados en la bbdd
