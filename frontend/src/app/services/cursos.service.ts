@@ -20,7 +20,7 @@ export class CursosService {
   };
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:8080';
+    this.url = 'http://localhost:8081';
   }
 
   //devuelve todos los cursos almacenados en la bbdd
