@@ -51,18 +51,37 @@ export class NuevocursoComponent implements OnInit {
   //permite agregar un tema al array para el nvo curso
   agregarTema(tema: string) {
     let agregarTema = new Tema();
-    agregarTema.nombreTema = tema;
-    if (agregarTema.nombreTema.length >= 2)
-      this.temaArrayNvoCurso.push(agregarTema); //valido que se ingresen al menos dos caracteres
+    agregarTema.nombreTema = tema.toLowerCase();
+    let temaYaEsta = this.temaArrayNvoCurso.find(temaArr => temaArr.nombreTema === tema.toLowerCase()) // valido si el valor ingresado ya se encuentra en el array
+                                            
+    if (agregarTema.nombreTema.length >= 2 && !temaYaEsta)
+      this.temaArrayNvoCurso.push(agregarTema); //valido que se ingresen al menos dos caracteres y que el valor no se encuentre ya en el array
+    else if(agregarTema.nombreTema.length<2){
+      alert('El tema debe incluir al menos dos caracteres.')
+    }else if (temaYaEsta){
+      alert('El tema ya fue agregado previamente a este nuevo curso.')
+    }
+
     this.temasIn = '';
   }
+
+
+  //nventario.find( fruta => fruta.nombre === 'cerezas' );
 
   //Permite agredar una tecnologia al array de tecnologias
   agregarTecnologia(tecno: string) {
     let agregarTecno = new Tecnologia();
-    agregarTecno.nombreTecnologia = tecno;
-    if (agregarTecno.nombreTecnologia.length >= 2)
+    agregarTecno.nombreTecnologia = tecno.toLowerCase();
+
+    let tecnoYaEsta = this.tecnologiasNvoCurso.find(tecnoArr => tecnoArr.nombreTecnologia === tecno.toLowerCase())// valido si la tecno ya se encuentra en el array para no agregarla dos veces
+
+    if (agregarTecno.nombreTecnologia.length >= 2 && !tecnoYaEsta)
       this.tecnologiasNvoCurso.push(agregarTecno);
+    else if (agregarTecno.nombreTecnologia.length<2){
+      alert('La tecnología debe incluir al menos dos caracteres.')
+    }else if (tecnoYaEsta){
+      alert('La tecnología fue agregada previamente a este nuevo curso.')
+    }
     this.tecnologiasIn = '';
   }
 
@@ -105,6 +124,8 @@ export class NuevocursoComponent implements OnInit {
     this.temaArrayNvoCurso = [];
     this.previsualizacion = '';
   }
+
+
 
   //------------------------------------------ Cargado de img ----------------------------------------------------
 
