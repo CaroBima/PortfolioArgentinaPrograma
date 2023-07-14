@@ -66,9 +66,7 @@ export class NuevocursoComponent implements OnInit {
   }
 
 
-  //nventario.find( fruta => fruta.nombre === 'cerezas' );
-
-  //Permite agredar una tecnologia al array de tecnologias
+  //Permite agregar una tecnologia al array de tecnologias
   agregarTecnologia(tecno: string) {
     let agregarTecno = new Tecnologia();
     agregarTecno.nombreTecnologia = tecno.toLowerCase();
