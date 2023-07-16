@@ -40,6 +40,9 @@ public class SecurityConfiguration {
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
+                        .defaultSuccessUrl("/") //redirección cuando el logueo es exitoso
+                        //.failureUrl("/login.html?error=true") //definir la pagina de error de logueo
+
                 )
                 .logout((logout) -> logout.permitAll());
 
