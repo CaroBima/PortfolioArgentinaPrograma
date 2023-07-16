@@ -26,16 +26,18 @@ public class Usuario {
     private String nombreUsuario;
     private String contrasenia;
     private String email;
+    private RolUsuario rolUsuario;
     
 
     public Usuario() {
     }
 
-    public Usuario(long idUsuario, String nombreUsuario, String contrasenia, String email) {
+    public Usuario(long idUsuario, String nombreUsuario, String contrasenia, String email, RolUsuario rolUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.email = email;
+        this.rolUsuario = rolUsuario;
     }
 
      
