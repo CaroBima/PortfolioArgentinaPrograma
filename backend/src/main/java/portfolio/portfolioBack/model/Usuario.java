@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Collections;
 
 
 @Getter
@@ -36,7 +37,13 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        /*Set<Authority> autoridades = new HashSet<>();
+        this.rolUsuario.forEach(rolUsuario ->{
+            autoridades.add(new Authority(rolUsuario.))
+        });*/
+        Authority autoridad = new Authority(rolUsuario.getNombreRol());
+
+        return  Collections.singleton(autoridad);
     }
 
     @Override
