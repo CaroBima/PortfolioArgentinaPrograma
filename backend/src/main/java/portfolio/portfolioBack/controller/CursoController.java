@@ -34,6 +34,7 @@ public class CursoController {
 
     @GetMapping("/buscarcurso")
     public Curso buscarUnCurso (@RequestParam Long idCurso){
+
         return cursoService.buscarUnCurso(idCurso);
     }
     

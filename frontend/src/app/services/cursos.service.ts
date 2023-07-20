@@ -46,7 +46,6 @@ export class CursosService {
   }
 
   public guardarCurso(nuevoCurso: Curso) {
-    console.log('entra a guardar curso');
     let endpoint = this.url + '/nuevocurso';
     this.http.post(endpoint, nuevoCurso, this.httpOptions).subscribe();
   }

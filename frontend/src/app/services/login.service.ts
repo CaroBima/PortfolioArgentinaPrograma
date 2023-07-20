@@ -12,7 +12,7 @@ const urlConst = `${API_URL}`;
   })
 
 
-export class loginService  {
+export class LoginService  {
     private url;
     httpOptions = {
       headers: new HttpHeaders({
@@ -26,14 +26,13 @@ export class loginService  {
         this.url = urlConst;
       }
 
-      /*public getAplicaciones(): Observable<Aplicacion[]> {
-    let endpoint = this.url + '/buscarproyectos';
-    return this.http.get<Aplicacion[]>(endpoint, this.httpOptions);
-  }*/
-
+ 
+      
   public sendLoginData(usuario : Usuario){
     let endpoint = this.url + '/login';
+    console.log('llega al servicio' + endpoint );
     this.http.post(endpoint, usuario, this.httpOptions).subscribe();
   }
     
+ 
 }  

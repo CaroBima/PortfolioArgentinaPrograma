@@ -1,6 +1,6 @@
 export class Usuario {
-    idTema?: number;
     nombreUsuario?: string;
+    contrasenia? : string;
     constructor() {}
   }
   

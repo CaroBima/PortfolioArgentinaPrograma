@@ -1,4 +1,4 @@
-
+/*
 package portfolio.portfolioBack.configuration;
 
 import org.springframework.context.annotation.Bean;
@@ -18,8 +18,8 @@ import org.springframework.http.HttpMethod;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-
-    @Bean
+*/
+  /*  @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable() //deshabilitar en produccion, puesto porque tira error al no estar pasando el token
@@ -27,29 +27,44 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers(
-                                new AntPathRequestMatcher("/"),
-                                new AntPathRequestMatcher("/home"),
+                                //new AntPathRequestMatcher("/"),
+                                //new AntPathRequestMatcher("/home"),
                                 new AntPathRequestMatcher("/buscarcurso"),
-                                new AntPathRequestMatcher("/buscarcursos"),
-                                new AntPathRequestMatcher("/nuevocurso") //agregado solo para probar, modificar despues, se requiere acceso con logueo
+                                new AntPathRequestMatcher("/buscarcursos")
+                                //new AntPathRequestMatcher("/nuevocurso") //agregado solo para probar, modificar despues, se requiere acceso con logueo
                         ).permitAll()
                         .antMatchers(HttpMethod.POST, "/nuevocurso").permitAll() //agregado solo para probar, modificar despues, se requiere acceso con logueo
                         .anyRequest().authenticated()
                         //.anyRequest().permitAll()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        //.loginPage("/login") // va por get
+                        .loginProcessingUrl("/login") // Ruta para procesar el formulario de login (POST)
                         .permitAll()
-                        .defaultSuccessUrl("/") //redirección cuando el logueo es exitoso
+                        .defaultSuccessUrl("/")
                         //.failureUrl("/login.html?error=true") //definir la pagina de error de logueo
-
                 )
                 .logout((logout) -> logout.permitAll());
 
 
         return http.build();
     }
-    @Bean
+
+*/
+
+    //ver esto:
+    /*  @Override
+    public void configure(HttpSecurity http) throws Exception {
+       http.csrf().disable().authorizeRequests()
+        .antMatchers("/").permitAll()
+        .antMatchers(HttpMethod.POST,"/newuser").permitAll()
+        .antMatchers(HttpMethod.POST, "/login").permitAll()
+        .antMatchers(HttpMethod.POST,"/newuser/*").permitAll()
+        .antMatchers(HttpMethod.GET,"/master/*").permitAll()
+         .antMatchers(HttpMethod.GET,"/exploreCourse").permitAll()
+        .anyRequest().authenticated()
+    }*/
+   /* @Bean
     public UserDetailsService userDetailsService(){
         PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         return new InMemoryUserDetailsManager(
@@ -70,5 +85,5 @@ public class SecurityConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
-}
+    }*/
+//}
