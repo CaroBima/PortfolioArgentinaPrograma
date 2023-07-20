@@ -6,5 +6,6 @@ import portfolio.portfolioBack.model.Usuario;
 
 
 public interface IUsuarioRepository  extends  JpaRepository<Usuario, Long>{
-    
+
+    Usuario findByNombreUsuario(String username);
 }

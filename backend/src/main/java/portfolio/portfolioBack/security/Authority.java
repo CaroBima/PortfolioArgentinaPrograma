@@ -1,4 +1,4 @@
-package portfolio.portfolioBack.model;
+package portfolio.portfolioBack.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
