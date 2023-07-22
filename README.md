@@ -15,13 +15,14 @@
 
 ### Backend:
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-6EBF20?style=flat&logo=spring&logoColor=white)
-![Java](https://img.shields.io/badge/-Java-6EBF20?style=flat&logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/Java-6EBF20?style=flat&logo=java&logoColor=white)
 
 #### Base de datos::
 ![MySql](http://img.shields.io/badge/-MySql-51CBF2?style=flat&logo=mysql&logoColor=white)
 ![Xampp](http://img.shields.io/badge/-Xampp-FF9A00?style=flat&logo=xampp&logoColor=white)
 
 #### Herramientas:
+![IntelliJ Idea](https://img.shields.io/badge/IntelliJIdea-6EBF20?style=flat&logo=IntelliJIdea&logoColor=white)
 ![NetBeans](https://img.shields.io/badge/NetBeansIDE-1B6AC6.svg?style=flat&logo=apache-netbeans-ide&logoColor=white")
 ![VSCode](https://img.shields.io/badge/-VSCode-007ACC?style=flat&logo=visual-studio-code&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=Postman&logoColor=white)
