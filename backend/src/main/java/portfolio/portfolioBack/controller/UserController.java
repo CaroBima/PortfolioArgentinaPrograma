@@ -44,12 +44,12 @@ public class UserController {
 
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register") ////FALTA VALIDAR QUE EL NOMBRE DE USUARIO NO ESTE YA EN USO
     public ResponseEntity registerUser(@RequestParam("user") String username, @RequestParam("password") String pwd){
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario(username);
         usuario.setContrasenia(pwd);
-
+        
         try {
             usuarioService.crearUsuario(usuario);
         }catch (Exception e) {

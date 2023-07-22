@@ -28,6 +28,7 @@ public class UsuarioService implements IUsuarioService{
     public void crearUsuario(Usuario usuario) {
         Usuario usuarioSave = new Usuario();
         usuarioSave.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+        usuarioSave.setNombreUsuario(usuario.getNombreUsuario());
 
         usuarioRepo.save(usuarioSave);
     }

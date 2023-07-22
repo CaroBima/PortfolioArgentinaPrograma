@@ -27,8 +27,11 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long idUsuario;
 
+    @Column(unique = true, nullable = false)
     private String nombreUsuario;
+
     private String contrasenia;
+
     private String email;
 
     @ManyToOne
