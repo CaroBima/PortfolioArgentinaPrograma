@@ -15,7 +15,7 @@
 
 ### Backend:
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-6EBF20?style=flat&logo=spring&logoColor=white)
-![Java](https://img.shields.io/badge/Java-6EBF20?style=flat&logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/Java-6EBF20?style=flat&logo=Java&logoColor=white)
 
 #### Base de datos::
 ![MySql](http://img.shields.io/badge/-MySql-51CBF2?style=flat&logo=mysql&logoColor=white)
