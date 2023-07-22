@@ -1,24 +1,15 @@
 package portfolio.portfolioBack.controller;
 
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import io.swagger.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import portfolio.portfolioBack.dto.UsuarioDto;
+import portfolio.portfolioBack.dto.UsuarioLoginDto;
 import portfolio.portfolioBack.model.Usuario;
 import portfolio.portfolioBack.security.SecurityConfig;
 import portfolio.portfolioBack.service.UsuarioService;
@@ -33,14 +24,26 @@ public class UserController {
     private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public UsuarioDto login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+    public ResponseEntity<UsuarioLoginDto> login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
+        UsuarioLoginDto userLoginDto = new UsuarioLoginDto();
+        Usuario usuario = new Usuario();
 
+        usuario.setNombreUsuario(username);
+        usuario.setContrasenia(pwd);
+        try {
+            if (usuarioService.logueoUsuario(usuario)) {
+                String token = securityConfig.getJWTToken(username);
+                userLoginDto.setNombreUsuario(username);
+                userLoginDto.setToken(token);
 
-        String token = securityConfig.getJWTToken(username);
-        UsuarioDto userDto = new UsuarioDto();
-        userDto.setNombreUsuario(username);
-        userDto.setToken(token);
-        return userDto;
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error en login");
+        }
+
+        return ResponseEntity.ok(userLoginDto); //ver de retornar error cuando no este ok el login
 
     }
 
@@ -49,7 +52,7 @@ public class UserController {
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario(username);
         usuario.setContrasenia(pwd);
-        
+
         try {
             usuarioService.crearUsuario(usuario);
         }catch (Exception e) {

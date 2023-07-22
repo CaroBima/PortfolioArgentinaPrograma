@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDto {
+public class UsuarioLoginDto {
     private String nombreUsuario;
-    private String contrasenia;
     private String token;
 }

@@ -3,6 +3,8 @@
 package portfolio.portfolioBack.service;
 
 import java.util.List;
+
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,10 +35,7 @@ public class UsuarioService implements IUsuarioService{
         usuarioRepo.save(usuarioSave);
     }
 
-    @Override
-    public Usuario buscarUnUsuario(Long idUsuario) {
-        return usuarioRepo.findById(idUsuario).orElse(null);
-    }
+
     
     //metodo que permite buscar un usuario por nombre y clave
     @Override
@@ -44,21 +43,24 @@ public class UsuarioService implements IUsuarioService{
         boolean logueo = false;
         Usuario usuGuardado = new Usuario();
 
-        String claveIngresada = passwordEncoder.encode(usuario.getContrasenia()); // codifico la clave que ingreso el usuario para compararla
-
         try {
             usuGuardado = usuarioRepo.findByNombreUsuario(usuario.getNombreUsuario()); //busco el usuario por el nombre de usuario ingresado
 
             if (usuGuardado != null) {
-                if (usuario.getNombreUsuario().equals(usuGuardado.getNombreUsuario()) && usuario.getContrasenia().equals(claveIngresada)) {
+                if (usuario.getNombreUsuario().equals(usuGuardado.getNombreUsuario()) && passwordEncoder.matches(usuario.getContrasenia(), usuGuardado.getContrasenia())) {
                     logueo = true;
                 } else logueo = false;
             }
         }catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Error en el logueo del usuario");
         }
 
         return logueo;
     }
-    
+
+    @Override
+    public Usuario buscarUnUsuario(Long idUsuario) {
+        return usuarioRepo.findById(idUsuario).orElse(null);
+    }
 }
