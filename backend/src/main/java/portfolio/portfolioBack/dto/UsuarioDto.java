@@ -12,4 +12,5 @@ import lombok.Setter;
 public class UsuarioDto {
     private String nombreUsuario;
     private String contrasenia;
+    private String token;
 }
