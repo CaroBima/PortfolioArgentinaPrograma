@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.swagger.models.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,68 +20,46 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import portfolio.portfolioBack.dto.UsuarioDto;
 import portfolio.portfolioBack.model.Usuario;
+import portfolio.portfolioBack.security.SecurityConfig;
+import portfolio.portfolioBack.service.UsuarioService;
 
 @RestController
 public class UserController {
 
-    @PostMapping("user")
+    @Autowired
+    private SecurityConfig securityConfig;
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @PostMapping("/login")
     public UsuarioDto login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 
-        String token = getJWTToken(username);
-        UsuarioDto user = new UsuarioDto();
-        user.setNombreUsuario(username);
-        user.setToken(token);
-        return user;
+
+        String token = securityConfig.getJWTToken(username);
+        UsuarioDto userDto = new UsuarioDto();
+        userDto.setNombreUsuario(username);
+        userDto.setToken(token);
+        return userDto;
 
     }
 
-    private String getJWTToken(String username) {
-        String secretKey = "AnastasiaPortfolio";
-        List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-                .commaSeparatedStringToAuthorityList("ROLE_USER");
+    @PostMapping("/register")
+    public ResponseEntity registerUser(@RequestParam("user") String username, @RequestParam("password") String pwd){
+        Usuario usuario = new Usuario();
+        usuario.setNombreUsuario(username);
+        usuario.setContrasenia(pwd);
 
-        String token = Jwts
-                .builder()
-                .setId("PortfolioCB")
-                .setSubject(username)
-                .claim("authorities",
-                        grantedAuthorities.stream()
-                                .map(GrantedAuthority::getAuthority)
-                                .collect(Collectors.toList()))
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 600000))
-                .signWith(SignatureAlgorithm.HS512,
-                        secretKey.getBytes()).compact();
+        try {
+            usuarioService.crearUsuario(usuario);
+        }catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Error al guardar usuario");
+            }
 
-        return "Bearer " + token;
+        return ResponseEntity.status(HttpStatus.CREATED).body("El usuario ha sido creado exitosamente.");
     }
+
+
 }
 
-
-/*
-package portfolio.portfolioBack.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import portfolio.portfolioBack.dto.UsuarioDto;
-import portfolio.portfolioBack.model.Usuario;
-import portfolio.portfolioBack.service.IUsuarioService;
-
-
-@RestController
-public class UsuarioController {
-    @Autowired
-    IUsuarioService usuarioService;
-    
-    @PostMapping("/login")
-    public void loginUsuario(@RequestBody UsuarioDto usuarioDto){
-        System.out.println("Llega al back");
-        System.out.println(usuarioDto.getNombreUsuario());
-        System.out.println(usuarioDto.getContrasenia());
-
-    }
-    
-}*/
