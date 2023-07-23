@@ -52,17 +52,23 @@ public class UserController {
         Usuario usuario = new Usuario();
         usuario.setNombreUsuario(username);
         usuario.setContrasenia(pwd);
+        int resultadoGuardado = 0;
+
 
         try {
-            usuarioService.crearUsuario(usuario);
+            resultadoGuardado = usuarioService.crearUsuario(usuario);
         }catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Error al guardar usuario");
             }
 
-        return ResponseEntity.status(HttpStatus.CREATED).body("El usuario ha sido creado exitosamente.");
+        if(resultadoGuardado == 1){
+            return ResponseEntity.status(HttpStatus.CREATED).body("El usuario ha sido creado exitosamente.");
+        }else if (resultadoGuardado == 2){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El nombre de usuario ya se encuentra en uso.");
+        }else
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El usuario no pudo ser creado. Intente nuevamente más tarde o contacte con un administrador.");
     }
-
 
 }
 

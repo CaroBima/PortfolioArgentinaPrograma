@@ -27,12 +27,31 @@ public class UsuarioService implements IUsuarioService{
 
 
     @Override
-    public void crearUsuario(Usuario usuario) {
+    public int crearUsuario(Usuario usuario) {
         Usuario usuarioSave = new Usuario();
-        usuarioSave.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
-        usuarioSave.setNombreUsuario(usuario.getNombreUsuario());
+        int estadoCreacion = 0; // 1 - se guardo ok, 2 - el nombre de usuario ya esta siendo utilizado, 0 - cualquier otro error
 
-        usuarioRepo.save(usuarioSave);
+        //busco el usuario para ver si el nombre de usuario ya se encuentra registado
+        Usuario usuGuardado = usuarioRepo.findByNombreUsuario(usuario.getNombreUsuario());
+
+        if(usuGuardado.getNombreUsuario() == null){
+
+            try{
+                usuarioSave.setContrasenia(passwordEncoder.encode(usuario.getContrasenia()));
+                usuarioSave.setNombreUsuario(usuario.getNombreUsuario());
+
+                usuarioRepo.save(usuarioSave);
+                estadoCreacion = 1;
+            }catch (Exception e) {
+                e.printStackTrace();
+                estadoCreacion = 0;
+                System.out.println("El usuario no ha podido ser guardado");
+            }
+        }else{
+            estadoCreacion = 2;
+        }
+
+        return estadoCreacion; // 1 - se guardo ok, 2 - el nombre de usuario ya esta siendo utilizado, 0 - cualquier otro error
     }
 
 

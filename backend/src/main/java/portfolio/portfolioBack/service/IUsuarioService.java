@@ -8,7 +8,7 @@ import portfolio.portfolioBack.model.Usuario;
 
 
 public interface IUsuarioService {
-    public void crearUsuario(Usuario usuario);
+    public int crearUsuario(Usuario usuario);
     //public List<Usuario> traerUsuarios();
     //public Usuario modificarUsuario(Long idUsuario);
     public Usuario buscarUnUsuario(Long idUsuario);

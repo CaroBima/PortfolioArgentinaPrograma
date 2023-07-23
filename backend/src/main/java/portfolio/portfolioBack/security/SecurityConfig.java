@@ -30,7 +30,8 @@ public class SecurityConfig {
             http.csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                    .antMatchers(HttpMethod.POST, "/login", "/register", "/buscarcursos", "/buscarcurso", "/buscarproyectos", "/buscarproyecto").permitAll()
+                    .antMatchers(HttpMethod.GET, "/buscarcursos", "/buscarcurso", "/buscarproyectos", "/buscarproyecto").permitAll()
                     .anyRequest().authenticated();
         }
     }
