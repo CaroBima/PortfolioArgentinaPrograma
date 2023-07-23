@@ -28,9 +28,12 @@ public class SecurityConfig {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http.csrf().disable()
+                    .cors() // Habilita la configuración de CORS
+                    .and()
+                    .csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
-                    .antMatchers(HttpMethod.POST, "/login", "/register", "/buscarcursos", "/buscarcurso", "/buscarproyectos", "/buscarproyecto").permitAll()
+                    .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                     .antMatchers(HttpMethod.GET, "/buscarcursos", "/buscarcurso", "/buscarproyectos", "/buscarproyecto").permitAll()
                     .anyRequest().authenticated();
         }
