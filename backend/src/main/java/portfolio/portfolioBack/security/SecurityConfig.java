@@ -34,6 +34,7 @@ public class SecurityConfig {
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests()
                     .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                    .antMatchers(HttpMethod.POST, "/nuevocurso").authenticated()
                     .antMatchers(HttpMethod.GET, "/buscarcursos", "/buscarcurso", "/buscarproyectos", "/buscarproyecto").permitAll()
                     .anyRequest().authenticated();
         }
